@@ -492,7 +492,6 @@ let commentsData = [
 let autoScrollInterval;
 let isPaused = false;
 const scrollSpeed = 1; // Velocidad del desplazamiento automático
-const container = document.getElementById("reviews-container");
 
 // --- INICIALIZACIÓN ---
 function toggleMobileMenu() {
@@ -502,29 +501,10 @@ function toggleMobileMenu() {
     document.body.classList.toggle('overflow-hidden');
 }
 
-// Efecto espectacular: Mostrar etiquetas al cargar
-document.addEventListener("DOMContentLoaded", () => {
-    const navItems = document.querySelectorAll('.nav-item');
-
-    // Muestra las etiquetas a los 1 segundos (saludo)
-    setTimeout(() => {
-        navItems.forEach((item, index) => {
-            setTimeout(() => {
-                item.classList.add('label-reveal');
-            }, index * 100);
-        });
-    }, 1000);
-
-    // Las oculta a los 3 segundos (duración de 2 segundos de saludo)
-    setTimeout(() => {
-        navItems.forEach(item => item.classList.remove('label-reveal'));
-    }, 3000);
-    renderComments();
-    startAutoScroll();
-});
 
 // --- RENDERIZADO ---
 function renderComments() {
+    const container = document.getElementById("reviews-container");
     container.innerHTML = commentsData.map(c => createCommentHTML(c)).join("");
 }
 
@@ -653,77 +633,40 @@ function toggleReplyForm(id) {
     if(!form.classList.contains("hidden")) {
         // Pausar slider si el usuario va a escribir
         pauseAutoScroll();
-        setTimeout(() => document.getElementById(`input-${id}`).focus(), 100);
     }
 }
 
-// 3. Auto Scroll Logic (Diapositiva)
-function startAutoScroll() {
-    if (autoScrollInterval) clearInterval(autoScrollInterval);
-    isPaused = false;
-
-    autoScrollInterval = setInterval(() => {
-        if (!isPaused && container) {
-            // Si llega al final, regresa al principio suavemente
-            if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 1) {
-                container.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                container.scrollLeft += scrollSpeed;
-            }
-        }
-    }, 20); // 20ms para fluidez (~50fps)
-}
-
-function pauseAutoScroll() {
-    isPaused = true;
-    if (autoScrollInterval) clearInterval(autoScrollInterval);
-}
-
-function manualScroll(dir) {
-    pauseAutoScroll(); // Pausar al interactuar manualmente
-    const scrollAmount = 530; // Ancho de card + gap
-    if (dir === "left") {
-        container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+// 3. Reacciones (Me gusta, Me encanta, etc.)
+function react(id, type, btn) {
+    // Lógica visual simple
+    btn.classList.toggle(`active-${type}`);
+    
+    const countSpan = btn.querySelector('span');
+    let count = parseInt(countSpan.innerText);
+    
+    if(btn.classList.contains(`active-${type}`)) {
+        count++;
     } else {
-        container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        count--;
     }
-    // Reiniciar auto-scroll después de unos segundos
-    setTimeout(startAutoScroll, 8000);
+    
+    countSpan.innerText = count;
+
+    // Efecto de escala
+    btn.style.transform = "scale(1.2)";
+    setTimeout(() => btn.style.transform = "scale(1)", 200);
 }
 
-// 4. Lógica de Reacciones (Recursiva para encontrar el comentario)
-function findCommentRecursive(comments, id) {
-    for (let c of comments) {
+// 4. Buscar comentario por ID (Recursivo)
+function findCommentRecursive(data, id) {
+    for (let c of data) {
         if (c.id === id) return c;
-        if (c.replies) {
-            const found = findCommentRecursive(c.replies, id);
+        if (c.replies && c.replies.length > 0) {
+            let found = findCommentRecursive(c.replies, id);
             if (found) return found;
         }
     }
     return null;
-}
-
-function react(id, type, btn) {
-    const comment = findCommentRecursive(commentsData, id);
-    if (!comment) return;
-
-    const isActive = btn.classList.contains(`active-${type}`);
-
-    // Reset visual
-    btn.classList.remove(`active-${type}`);
-
-    if (isActive) {
-        comment.reactions[type]--;
-    } else {
-        btn.classList.add(`active-${type}`);
-        comment.reactions[type]++;
-
-        // Animación simple
-        btn.querySelector('i').style.transform = "scale(1.4)";
-        setTimeout(() => btn.querySelector('i').style.transform = "scale(1)", 200);
-    }
-
-    btn.querySelector("span").innerText = comment.reactions[type];
 }
 
 // 5. Enviar Respuesta
@@ -754,44 +697,19 @@ function submitReply(parentId) {
     }
 }
 
-function setRating(n) {
-    currentRating = n;
-    const stars = document.querySelectorAll("#new-review-modal .fa-star");
-    stars.forEach((s, i) => {
-        if (i < n) s.classList.add("text-yellow-400");
-        else s.classList.remove("text-yellow-400");
-    });
+function startAutoScroll() {
+    if (autoScrollInterval) clearInterval(autoScrollInterval);
+    autoScrollInterval = setInterval(() => {
+        if (!isPaused) {
+            const container = document.getElementById("reviews-container");
+            if(container) container.scrollLeft += scrollSpeed;
+        }
+    }, 30);
 }
 
-function submitNewReview() {
-    const name = document.getElementById("review-name").value;
-    const text = document.getElementById("review-text").value;
+function pauseAutoScroll() { isPaused = true; }
+function resumeAutoScroll() { isPaused = false; }
 
-    if (name && text) {
-        commentsData.unshift({
-            id: Date.now(),
-            user: name,
-            text: text,
-            rating: currentRating,
-            date: "Ahora",
-            reactions: { like: 0, love: 0, dislike: 0 },
-            replies: [],
-        });
-        renderComments();
-        document.getElementById("new-review-modal").classList.add("hidden");
-        // Reset fields
-        document.getElementById("review-name").value = "";
-        document.getElementById("review-text").value = "";
-    }
-}
-
-function scrollReviews(dir) {
-    const container = document.getElementById("reviews-container");
-    const scrollAmount = 320;
-    if (dir === "left")
-        container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    else container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-}
 
 // --- 4. CHATBOT INTELIGENTE "SANTIAGO" ---
 
@@ -799,14 +717,14 @@ let chatState = {
     step: "IDLE",
     name: "",
     type: "",
-    context: {}, // Para guardar si viene de carrito, etc.
+    leadScore: 0,
+    context: {},
 };
 
 function toggleChat() {
     const win = document.getElementById("chat-window");
     win.classList.toggle("hidden");
 
-    // Si se abre por primera vez
     if (!win.classList.contains("hidden") && chatState.step === "IDLE") {
         botThinking(() => {
             addBotMsg(
@@ -818,20 +736,10 @@ function toggleChat() {
     }
 }
 
-function openChatWithCart() {
-    const win = document.getElementById("chat-window");
-    if (win.classList.contains("hidden")) toggleChat();
-
-    // Override state for Cart flow
-    chatState.context.hasCart = true;
-
-    setTimeout(() => {
-        addBotMsg(
-            "Veo que tienes una selección de productos interesante. 🧐 ¿Quieres que revise la disponibilidad para esos artículos?",
-            ["Sí, revisar fechas", "Solo estoy viendo"],
-        );
-        chatState.step = "CART_FLOW";
-    }, 800);
+function isInvalidInput(text) {
+    const repeatedChars = /(.)\1{4,}/.test(text);
+    const randomChars = text.length > 5 && !/[aeiouáéíóúü]/i.test(text);
+    return repeatedChars || randomChars;
 }
 
 function handleUserMessage() {
@@ -839,23 +747,39 @@ function handleUserMessage() {
     const text = input.value.trim();
     if (!text) return;
 
+    if (isInvalidInput(text)) {
+        addUserMsg(text);
+        botThinking(() => {
+            addBotMsg("Ups, parece que hubo un error al escribir. Por favor, intenta de nuevo con algo más claro.");
+        });
+        input.value = "";
+        return;
+    }
+
     addUserMsg(text);
     input.value = "";
-
     botThinking(() => processLogic(text));
 }
 
 function processLogic(text) {
     const lower = text.toLowerCase();
 
-    // Máquina de Estados
+    // Lead Scoring
+    if (lower.includes("presupuesto") || lower.includes("precio") || lower.includes("cotizar") || lower.includes("carrito")) {
+        chatState.leadScore += 50;
+    }
+    if (lower.includes("ubicación") || lower.includes("showroom") || lower.includes("donde")) {
+        chatState.leadScore += 30;
+    }
+
+    // Máquina de Estados Refinada
     switch (chatState.step) {
         case "WAITING_NAME":
             chatState.name = text;
             chatState.step = "WAITING_EVENT";
             addBotMsg(
-                `Un gusto, ${chatState.name}. ¿Qué tipo de evento estás planeando? (Boda, XV Años, Empresarial...)`,
-                ["Boda", "Empresarial", "Cumpleaños"],
+                `Un gusto, ${chatState.name}. ¿Qué tipo de evento estás planeando?`,
+                ["Boda", "Empresarial", "XV Años"],
             );
             break;
 
@@ -863,92 +787,99 @@ function processLogic(text) {
             chatState.type = text;
             chatState.step = "MENU";
             addBotMsg(
-                `Excelente. Somos especialistas en ${chatState.type}. ¿Cómo puedo ayudarte hoy?`,
-                ["Ver Catálogo", "Ubicación Showroom", "Hablar con Humano"],
+                `Excelente. Somos especialistas en ${chatState.type}. ¿Cómo puedo ayudarte hoy, ${chatState.name}?`,
+                ["Ver Catálogo", "Ubicación Showroom", "Presupuesto VIP"],
             );
             break;
 
-        case "CART_FLOW":
-            if (lower.includes("sí") || lower.includes("revisar")) {
-                sendWhatsAppCart();
+        case "MENU":
+            if (lower.includes("ubicación") || lower.includes("showroom") || lower.includes("donde")) {
+                showLocation();
+            } else if (lower.includes("catalogo") || lower.includes("ver") || lower.includes("colección")) {
+                addBotMsg(
+                    "Puedes ver todo nuestro inventario en la sección 'Colección'. ¿Te acompaño ahí?",
+                    ["Ir a Colección", "Volver al Menú"],
+                );
+                document.getElementById("coleccion")?.scrollIntoView({ behavior: "smooth" });
+            } else if (lower.includes("presupuesto") || lower.includes("vip") || lower.includes("cotizar") || lower.includes("humano")) {
+                chatState.leadScore += 20;
+                addBotMsg(
+                    `${chatState.name}, para tu evento de ${chatState.type} lo ideal es una atención personalizada. ¿Te conecto directo a nuestro WhatsApp VIP?`,
+                    ["Abrir WhatsApp", "Seguir Navegando"],
+                );
             } else {
                 addBotMsg(
-                    "Entendido. Puedes seguir navegando. Si necesitas algo más, aquí estoy.",
-                    ["Cerrar Chat"],
+                    "No estoy seguro de entender, pero no te preocupes. ¿Prefieres ver la ubicación o solicitar un presupuesto?",
+                    ["Ubicación", "Presupuesto", "Volver al Menú"],
                 );
-                chatState.step = "CLOSING";
             }
             break;
 
-        case "MENU":
-            if (
-                lower.includes("ubicación") ||
-                lower.includes("donde") ||
-                lower.includes("showroom")
-            ) {
-                showLocation();
-            } else if (lower.includes("catalogo") || lower.includes("ver")) {
-                addBotMsg(
-                    "Puedes ver todo nuestro inventario en la sección 'Colección' arriba. ¿Te acompaño ahí?",
-                    ["Ir a Colección"],
-                );
-                // Logic to scroll
-                document
-                    .getElementById("coleccion")
-                    .scrollIntoView({ behavior: "smooth" });
-            } else if (lower.includes("humano") || lower.includes("persona")) {
-                addBotMsg(
-                    "Claro, te comparto mi WhatsApp directo para una atención personalizada.",
-                    ["Abrir WhatsApp"],
-                );
-                addLinkBtn(
-                    "https://wa.me/524778217435",
-                    "Contactar a Santiago",
-                );
-                delayedClose();
+        case "CART_FLOW":
+            if (lower.includes("sí") || lower.includes("revisar") || lower.includes("disponibilidad")) {
+                sendWhatsAppCart();
             } else {
                 addBotMsg(
-                    "No estoy seguro de entender. ¿Quieres ver nuestra ubicación o el catálogo?",
-                    ["Ubicación", "Catálogo"],
+                    "Entendido. Puedes seguir navegando por la colección. Si cambias de opinión, aquí estaré.",
+                    ["Ver Colección", "Menú Principal"],
                 );
+                chatState.step = "MENU";
             }
             break;
 
         case "CLOSING":
-            addBotMsg(
-                "¡Que tengas un excelente día! Minimizaré el chat para que veas la página mejor. 👋",
-                [],
-            );
+            addBotMsg("¡Que tengas un excelente día! Minimizaré el chat para que sigas disfrutando la página. 👋");
             delayedClose();
             break;
 
         default:
-            addBotMsg("¿En qué más puedo ayudarte?", [
-                "Ver Carrito",
-                "Ubicación",
-            ]);
+            addBotMsg(`Dime, ${chatState.name}, ¿en qué más puedo apoyarte?`, ["Presupuesto", "Ubicación", "Menú"]);
             chatState.step = "MENU";
+    }
+
+    // Acción Proactiva de Lead Scoring
+    if (chatState.leadScore >= 70 && chatState.step !== "CLOSING") {
+        setTimeout(() => {
+            addBotMsg("🔥 ¡Santiago detectó que buscas algo especial! Te ofrezco atención prioritaria inmediata por WhatsApp.", ["Hablar con Asesor Now"]);
+        }, 3000);
+        chatState.leadScore = 0; // Reset para no spamear
     }
 }
 
-// Funciones de Respuesta Bot
+function openChatWithCart() {
+    const win = document.getElementById("chat-window");
+    if (win.classList.contains("hidden")) toggleChat();
+
+    chatState.context.hasCart = true;
+    chatState.leadScore += 40;
+
+    setTimeout(() => {
+        addBotMsg(
+            "Veo que ya tienes productos en tu selección. 🧐 ¿Quieres que revisemos la disponibilidad y precio final para tu fecha?",
+            ["Sí, revisar ahora", "Solo estoy viendo"],
+        );
+        chatState.step = "CART_FLOW";
+    }, 800);
+}
+
 function botThinking(callback) {
     const chatContent = document.getElementById("chat-content");
     const id = "thinking-" + Date.now();
     chatContent.innerHTML += `
           <div id="${id}" class="flex gap-2 fade-in-up">
               <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center"><i class="bx bx-dots-horizontal-rounded animate-pulse text-royal-900"></i></div>
-              <div class="text-xs text-slate-400 mt-2">Escribiendo...</div>
+              <div class="text-xs text-slate-400 mt-2">Santiago está escribiendo...</div>
           </div>`;
     scrollToBottom();
 
     setTimeout(() => {
-        document.getElementById(id).remove();
+        const el = document.getElementById(id);
+        if (el) el.remove();
         callback();
-    }, 1200); // Retardo artificial para realismo
+    }, 1000);
 }
 
-function addBotMsg(text, suggestions) {
+function addBotMsg(text, suggestions = []) {
     const chatContent = document.getElementById("chat-content");
     chatContent.innerHTML += `
           <div class="flex gap-2 max-w-[90%] fade-in-up">
@@ -974,13 +905,12 @@ function addUserMsg(text) {
 
 function renderSuggestions(opts) {
     const container = document.getElementById("chat-suggestions");
-    if (opts.length > 0) {
-        container.parentElement.classList.remove("hidden");
+    if (opts && opts.length > 0) {
         container.innerHTML = opts
             .map(
                 (o) => `
               <button onclick="document.getElementById('chat-input').value='${o}'; handleUserMessage()" 
-                      class="px-3 py-1 bg-white border border-gold-400/30 text-royal-900 rounded-full text-xs hover:bg-gold-400 hover:text-white transition shadow-sm">
+                      class="px-3 py-1 bg-white border border-gold-400/30 text-royal-900 rounded-full text-xs font-bold hover:bg-gold-400 hover:text-white transition shadow-sm">
                   ${o}
               </button>
           `,
@@ -993,7 +923,7 @@ function renderSuggestions(opts) {
 
 function scrollToBottom() {
     const el = document.getElementById("chat-content");
-    el.scrollTop = el.scrollHeight;
+    if (el) el.scrollTop = el.scrollHeight;
 }
 
 function sendWhatsAppCart() {
@@ -1006,20 +936,20 @@ function sendWhatsAppCart() {
     msg += `\n*Total Estimado: $${total.toLocaleString()}*\n¿Tienen disponibilidad?`;
 
     addBotMsg(
-        `He generado tu resumen por $${total.toLocaleString()}. Haz clic abajo para enviármelo.`,
+        `He generado tu resumen. Haz clic abajo para enviármelo y darte seguimiento VIP.`,
         [],
     );
     addLinkBtn(
         `https://wa.me/524778217435?text=${encodeURIComponent(msg)}`,
-        "Enviar a WhatsApp",
+        "Enviar a WhatsApp VIP",
     );
     delayedClose();
 }
 
 function showLocation() {
     addBotMsg(
-        "Estamos en Calle Tallin 145, Col. Agua Azul. Aquí tienes el mapa:",
-        ["Gracias"],
+        "Estamos en Calle Tallin 145, Col. Agua Azul, León. ¡Te esperamos! Aquí tienes el mapa interactivo:",
+        ["Gracias, volver al menú"],
     );
     const chatContent = document.getElementById("chat-content");
     chatContent.innerHTML += `
@@ -1027,7 +957,6 @@ function showLocation() {
              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.4939226297374!2d-101.6666896249658!3d21.13276688054366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842bbf61e3895eef%3A0xe544974797055745!2sCalle%20Tallin%20145%2C%20Agua%20Azul%2C%2037250%20Le%C3%B3n%2C%20Gto.!5e0!3m2!1ses-419!2smx!4v1704230000000!5m2!1ses-419!2smx" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>`;
     scrollToBottom();
-    chatState.step = "CLOSING";
 }
 
 function addLinkBtn(url, label) {
@@ -1044,14 +973,29 @@ function addLinkBtn(url, label) {
 function delayedClose() {
     setTimeout(() => {
         const win = document.getElementById("chat-window");
-        if (!win.classList.contains("hidden")) {
+        if (win && !win.classList.contains("hidden")) {
             toggleChat();
-            // Reset state partially so if they open again it's friendly
             chatState.step = "MENU";
         }
-    }, 5000); // 5 segundos para leer y cierra
+    }, 5000);
 }
 
-// --- INICIALIZACIÓN ---
-renderProducts();
-renderComments();
+// Inicialización de efectos de Nav y App
+document.addEventListener("DOMContentLoaded", () => {
+    const navItems = document.querySelectorAll('.nav-item');
+    setTimeout(() => {
+        navItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('label-reveal');
+            }, index * 100);
+        });
+    }, 1000);
+
+    setTimeout(() => {
+        navItems.forEach(item => item.classList.remove('label-reveal'));
+    }, 4500);
+    
+    renderComments();
+    startAutoScroll();
+    renderProducts();
+});
