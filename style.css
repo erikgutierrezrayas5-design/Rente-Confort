@@ -159,32 +159,12 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   }
 
-  /* FAQ's Styles */
-  .faq-item.active {
-      border-color: #BF953F;
-      box-shadow: 0 4px 20px rgba(191, 149, 63, 0.1);
-  }
-  .faq-answer {
-      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+  /* Animación de entrada */
+  .fade-in-up { animation: fadeUp 0.5s ease forwards; }
 
-  /* Social Media Hover Effects */
-  .social-item a {
-      transition: all 0.3s ease;
-  }
-  .social-item a:hover {
-      transform: translateY(-3px);
-  }
-
-  /* Comments Section Animation Enhancements */
-  .comments-wrapper {
-      scroll-snap-type: x mandatory;
-  }
-  .comment-card {
-      scroll-snap-align: center;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .comment-card:hover {
-      transform: scale(1.02) translateY(-10px);
-      box-shadow: 0 30px 60px -15px rgba(0, 18, 41, 0.15);
+  /* Mobile Tweaks */
+  @media (max-width: 768px) {
+      .mobile-stack { flex-direction: column; }
+      .mobile-full { width: 100%; }
+      .hero-title { font-size: 2.5rem !important; }
   }

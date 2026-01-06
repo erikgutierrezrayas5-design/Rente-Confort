@@ -697,34 +697,6 @@ function submitReply(parentId) {
     }
 }
 
-function toggleFAQ(btn) {
-    const item = btn.parentElement;
-    const answer = item.querySelector('.faq-answer');
-    const icon = btn.querySelector('i');
-    
-    const isOpen = item.classList.contains('active');
-    
-    // Cerrar otros
-    document.querySelectorAll('.faq-item').forEach(f => {
-        f.classList.remove('active');
-        f.querySelector('.faq-answer').style.maxHeight = '0px';
-        f.querySelector('i').classList.replace('bx-minus', 'bx-plus');
-    });
-
-    if (!isOpen) {
-        item.classList.add('active');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-        icon.classList.replace('bx-plus', 'bx-minus');
-    }
-}
-
-function manualScroll(dir) {
-    const container = document.getElementById("reviews-container");
-    const amount = 300;
-    if (dir === 'left') container.scrollBy({ left: -amount, behavior: 'smooth' });
-    else container.scrollBy({ left: amount, behavior: 'smooth' });
-}
-
 function startAutoScroll() {
     if (autoScrollInterval) clearInterval(autoScrollInterval);
     autoScrollInterval = setInterval(() => {

@@ -117,11 +117,7 @@
     </div>
   </nav>
 
-  <div id="side-nav" class="nav-sidebar hidden lg:flex">
-    <a href="#inicio" class="nav-item group">
-        <div class="nav-icon"><i class='bx bx-home'></i></div>
-        <span class="nav-label">Inicio</span>
-    </a>
+  <aside id="side-nav" class="nav-sidebar hidden lg:flex">
     <a href="#coleccion" class="nav-item group">
         <div class="nav-icon"><i class='bx bx-collection'></i></div>
         <span class="nav-label">Colección</span>
@@ -134,11 +130,11 @@
         <div class="nav-icon"><i class='bx bx-comment-detail'></i></div>
         <span class="nav-label">Opiniones</span>
     </a>
-    <a href="#faqs" class="nav-item group">
-        <div class="nav-icon"><i class='bx bx-help-circle'></i></div>
-        <span class="nav-label">Preguntas</span>
+    <a href="#ubicacion" class="nav-item group">
+        <div class="nav-icon"><i class='bx bx-map-alt'></i></div>
+        <span class="nav-label">Ubicación</span>
     </a>
-  </div>
+  </aside>
 
   <div id="mobile-menu" class="fixed inset-0 bg-royal-900/98 z-[60] transform translate-x-full transition-transform duration-500 ease-in-out lg:hidden flex flex-col items-center justify-center">
     <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-gold-400 text-4xl hover:rotate-90 transition-transform">
@@ -307,88 +303,32 @@
       </div>
   </section>
 
-  <section id="social-media" class="py-8 bg-royal-900 border-y border-gold-400/10">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-wrap justify-center gap-8 md:gap-12">
-            <a href="https://instagram.com" target="_blank" class="group flex flex-col items-center gap-2">
-                <div class="w-12 h-12 rounded-full border border-gold-400/30 flex items-center justify-center text-gold-400 group-hover:bg-gold-400 group-hover:text-royal-900 transition-all duration-500 shadow-lg hover:shadow-gold-400/20">
-                    <i class='bx bxl-instagram text-2xl'></i>
-                </div>
-                <span class="text-[10px] uppercase tracking-widest text-gold-400/60 group-hover:text-gold-400 transition-colors">Instagram</span>
-            </a>
-            <a href="https://m.facebook.com" target="_blank" class="group flex flex-col items-center gap-2">
-                <div class="w-12 h-12 rounded-full border border-gold-400/30 flex items-center justify-center text-gold-400 group-hover:bg-gold-400 group-hover:text-royal-900 transition-all duration-500 shadow-lg hover:shadow-gold-400/20">
-                    <i class='bx bxl-facebook text-2xl'></i>
-                </div>
-                <span class="text-[10px] uppercase tracking-widest text-gold-400/60 group-hover:text-gold-400 transition-colors">Facebook</span>
-            </a>
-            <a href="https://pinterest.com" target="_blank" class="group flex flex-col items-center gap-2">
-                <div class="w-12 h-12 rounded-full border border-gold-400/30 flex items-center justify-center text-gold-400 group-hover:bg-gold-400 group-hover:text-royal-900 transition-all duration-500 shadow-lg hover:shadow-gold-400/20">
-                    <i class='bx bxl-pinterest text-2xl'></i>
-                </div>
-                <span class="text-[10px] uppercase tracking-widest text-gold-400/60 group-hover:text-gold-400 transition-colors">Pinterest</span>
-            </a>
-            <a href="https://youtube.com" target="_blank" class="group flex flex-col items-center gap-2">
-                <div class="w-12 h-12 rounded-full border border-gold-400/30 flex items-center justify-center text-gold-400 group-hover:bg-gold-400 group-hover:text-royal-900 transition-all duration-500 shadow-lg hover:shadow-gold-400/20">
-                    <i class='bx bxl-youtube text-2xl'></i>
-                </div>
-                <span class="text-[10px] uppercase tracking-widest text-gold-400/60 group-hover:text-gold-400 transition-colors">YouTube</span>
-            </a>
-            <a href="https://www.tiktok.com" target="_blank" class="group flex flex-col items-center gap-2">
-                <div class="w-12 h-12 rounded-full border border-gold-400/30 flex items-center justify-center text-gold-400 group-hover:bg-gold-400 group-hover:text-royal-900 transition-all duration-500 shadow-lg hover:shadow-gold-400/20">
-                    <i class='bx bxl-tiktok text-2xl'></i>
-                </div>
-                <span class="text-[10px] uppercase tracking-widest text-gold-400/60 group-hover:text-gold-400 transition-colors">TikTok</span>
-            </a>
-        </div>
+  <section id="social-media"  class="py-2 px-10 flex items-center justify-between bg-royal-900 max-w-[100vw] mx-auto">
+    <div class="flex gap-4 text-xl text-gold-400">
+      <div class="social-item">
+                        <a href="https://instagram.com" target="_blank" class="hover:text-gold-500 transition">
+                    <i class='bx bxl-instagram'></i>
+                        </a>
     </div>
-  </section>
-
-  <section id="faqs" class="py-24 bg-white">
-    <div class="container mx-auto px-6 max-w-4xl">
-        <div class="text-center mb-16">
-            <h2 class="text-xs font-bold text-royal-900 uppercase tracking-[0.3em] mb-4">Preguntas Frecuentes</h2>
-            <h3 class="text-4xl font-serif text-royal-900">Resolvemos tus dudas</h3>
-        </div>
-        
-        <div class="space-y-4">
-            <div class="faq-item border border-slate-100 rounded-xl overflow-hidden transition-all duration-300">
-                <button onclick="toggleFAQ(this)" class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-slate-50 transition-colors">
-                    <span class="font-bold text-royal-900">¿Con cuánto tiempo de anticipación debo contratar?</span>
-                    <i class='bx bx-plus text-gold-500 text-xl transition-transform duration-300'></i>
-                </button>
-                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
-                    <p class="px-6 py-4 text-slate-600 text-sm leading-relaxed">
-                        Recomendamos reservar con al menos 3 a 6 meses de anticipación, especialmente para bodas en temporada alta. Sin embargo, contamos con un amplio stock para atender solicitudes de último minuto según disponibilidad.
-                    </p>
-                </div>
-            </div>
-
-            <div class="faq-item border border-slate-100 rounded-xl overflow-hidden transition-all duration-300">
-                <button onclick="toggleFAQ(this)" class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-slate-50 transition-colors">
-                    <span class="font-bold text-royal-900">¿Hacen eventos fuera de León, Gto?</span>
-                    <i class='bx bx-plus text-gold-500 text-xl transition-transform duration-300'></i>
-                </button>
-                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
-                    <p class="px-6 py-4 text-slate-600 text-sm leading-relaxed">
-                        Sí, cubrimos todo el Bajío (Silao, Irapuato, Guanajuato, San Miguel de Allende y Lagos de Moreno). Se aplica un cargo por logística dependiendo de la distancia y volumen del mobiliario.
-                    </p>
-                </div>
-            </div>
-
-            <div class="faq-item border border-slate-100 rounded-xl overflow-hidden transition-all duration-300">
-                <button onclick="toggleFAQ(this)" class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-slate-50 transition-colors">
-                    <span class="font-bold text-royal-900">¿Incluyen el montaje del mobiliario?</span>
-                    <i class='bx bx-plus text-gold-500 text-xl transition-transform duration-300'></i>
-                </button>
-                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
-                    <p class="px-6 py-4 text-slate-600 text-sm leading-relaxed">
-                        Nuestra logística blindada incluye la entrega, acomodo básico según tu plano de distribución y el retiro del mobiliario. Para montajes complejos o diseño de interiores de carpas, contamos con equipo especializado.
-                    </p>
-                </div>
-            </div>
-        </div>
+    <div class="social-item">
+       <a href="https://m.facebook.com" target="_blank" class="hover:text-gold-500 transition">
+            <i class='bx bxl-facebook'></i>
+         </a>
     </div>
+    <div class="social-item">
+       <a href="https://pinterest.com" target="_blank" class="hover:text-gold-500 transition"><i class='bx bxl-pinterest'></i></a>
+    </div>
+    <div class="social-item">
+       <a href="https://youtube.com" target="_blank" class="hover:text-gold-500 transition"><i class='bx bxl-youtube'></i></a>
+    </div>
+    <div class="social-item">
+       <a href="https://www.tiktok.com" target="_blank" class="hover:text-gold-500 transition"><i class='bx bxl-tiktok'></i></a>
+    </div>
+    <div class="social-item">
+       <a href="https://www.linkedin.com" target="_blank" class="hover:text-gold-500 transition"><i class='bx bxl-linkedin'></i>
+       </a>
+    </div>
+    
   </section>
 
   <section id="como_llegar" class="px-0 py-2 min-w-full bg-royal-metallic h-auto">
