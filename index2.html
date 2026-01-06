@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RENTE CONFORT | Eventos de Autor</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cinzel"', 'serif'], // Fuente elegante para títulos
+            sans: ['"Lato"', 'sans-serif'], // Fuente legible para textos
+          },
+          colors: {
+            royal: {
+              800: '#0a192f', // Azul muy oscuro para contrastes
+              900: '#00204a', // Azul Royal Principal
+            },
+            gold: {
+              300: '#fddb92',
+              400: '#d4af37', // Oro clásico
+              500: '#c59d24',
+              600: '#aa8216'
+            },
+            cream: '#fdfbf7' // Blanco roto para fondos suaves
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background-color: #f8fafc; color: #1e293b; }
+    
+    /* Gradiente Dorado para textos */
+    .text-gold-gradient {
+        background: linear-gradient(to right, #aa8216, #d4af37, #fddb92, #d4af37);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% auto;
+        animation: shine 6s linear infinite;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px -5px rgba(0, 32, 74, 0.15);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: #00204a; border-radius: 4px; }
+    ::-webkit-scrollbar-track { background: #e2e8f0; }
+  </style>
+</head>
+<body class="antialiased font-sans">
+
+  <section id="paquetes" class="py-24 bg-cream relative">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-serif text-royal-900 mb-4">Nuestra Colección</h2>
+        <div class="w-24 h-1 bg-gold-500 mx-auto"></div>
+        <p class="mt-4 text-slate-500">Selecciona la experiencia perfecta para tu celebración</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden card-hover transition-all duration-300 border border-slate-100 group">
+          <div class="h-64 overflow-hidden relative">
+            <div class="absolute inset-0 bg-royal-900/20 group-hover:bg-transparent transition z-10"></div>
+            <img src="https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-700">
+            <span class="absolute bottom-4 left-4 bg-white/90 backdrop-blur text-royal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider z-20">50 Personas</span>
+          </div>
+          <div class="p-8 relative">
+            <h3 class="text-2xl font-serif text-royal-900 mb-2">Jardín Social</h3>
+            <p class="text-slate-500 text-sm mb-6 h-10">Ideal para bautizos, comidas familiares y reuniones íntimas.</p>
+            
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center gap-3 text-sm text-slate-700"><i class='bx bxs-check-circle text-gold-500'></i> Carpa Árabe 6x6m</li>
+              <li class="flex items-center gap-3 text-sm text-slate-700"><i class='bx bxs-check-circle text-gold-500'></i> 5 Mesas Redondas</li>
+              <li class="flex items-center gap-3 text-sm text-slate-700"><i class='bx bxs-check-circle text-gold-500'></i> 50 Sillas Tiffany Blancas</li>
+              <li class="flex items-center gap-3 text-sm text-slate-700"><i class='bx bxs-check-circle text-gold-500'></i> Mantelería Básica</li>
+            </ul>
+
+            <div class="flex items-center justify-between pt-6 border-t border-slate-100">
+              <div>
+                <span class="text-xs text-slate-400 uppercase block">Inversión</span>
+                <span class="text-2xl font-serif text-royal-900 font-bold">$2,499</span>
+              </div>
+              <button onclick="quotePackage('Jardín Social', 2499)" class="w-10 h-10 rounded-full bg-royal-900 text-white flex items-center justify-center hover:bg-gold-500 transition shadow-lg">
+                <i class='bx bx-right-arrow-alt text-2xl'></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-royal-900 rounded-xl shadow-2xl overflow-hidden card-hover transition-all duration-300 relative transform md:-translate-y-4 border border-gold-500/30">
+          <div class="absolute top-0 right-0 bg-gold-500 text-white text-[10px] font-bold px-4 py-2 uppercase tracking-widest z-20">Recomendado</div>
+          <div class="h-64 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0202128?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform hover:scale-110 duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-royal-900 to-transparent opacity-90"></div>
+          </div>
+          <div class="p-8 relative">
+            <h3 class="text-2xl font-serif text-white mb-2">Boda Luxury</h3>
+            <p class="text-blue-200 text-sm mb-6 h-10">La máxima expresión de elegancia para tu gran día.</p>
+            
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center gap-3 text-sm text-blue-100"><i class='bx bxs-star text-gold-500'></i> Carpa Estructural 6x12m</li>
+              <li class="flex items-center gap-3 text-sm text-blue-100"><i class='bx bxs-star text-gold-500'></i> Cielo Drapedo & Candil</li>
+              <li class="flex items-center gap-3 text-sm text-blue-100"><i class='bx bxs-star text-gold-500'></i> Mesas Madera Parota</li>
+              <li class="flex items-center gap-3 text-sm text-blue-100"><i class='bx bxs-star text-gold-500'></i> Silla Crossback & Loza</li>
+            </ul>
+
+            <div class="flex items-center justify-between pt-6 border-t border-blue-800">
+              <div>
+                <span class="text-xs text-blue-300 uppercase block">Inversión</span>
+                <span class="text-2xl font-serif text-gold-400 font-bold">$5,800</span>
+              </div>
+              <button onclick="quotePackage('Boda Luxury', 5800)" class="px-6 py-2 rounded-sm bg-white text-royal-900 text-xs font-bold uppercase hover:bg-gold-500 hover:text-white transition">
+                Reservar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden card-hover transition-all duration-300 border border-slate-100 group">
+          <div class="h-64 overflow-hidden relative">
+            <div class="absolute inset-0 bg-royal-900/20 group-hover:bg-transparent transition z-10"></div>
+            <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-700">
+            <span class="absolute bottom-4 left-4 bg-white/90 backdrop-blur text-royal-900 px-3 py-1 text-xs font-bold uppercase tracking-wider z-20">Empresarial</span>
+          </div>
+          <div class="p-8 relative">
+            <h3 class="text-2xl font-serif text-royal-900 mb-2">Corporate Blue</h3>
+            <p class="text-slate-500 text-sm mb-6 h-10">Soluciones eficientes para conferencias y expos.</p>
+            
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center gap-3 text-sm text-slate-700"><i class='bx bxs-check-circle text-gold-500'></i> Montaje Auditorio (100 pax)</li>
+              <li class="flex items-center gap-3 text-sm text-slate-700"><i class='bx bxs-check-circle text-gold-500'></i> Sillas Acojinadas</li>
+              <li class="flex items-center gap-3 text-sm text-slate-700"><i class='bx bxs-check-circle text-gold-500'></i> Podium y Presidium</li>
+              <li class="flex items-center gap-3 text-sm text-slate-700"><i class='bx bxs-check-circle text-gold-500'></i> Estación de Café</li>
+            </ul>
+
+            <div class="flex items-center justify-between pt-6 border-t border-slate-100">
+              <div>
+                <span class="text-xs text-slate-400 uppercase block">Inversión</span>
+                <span class="text-2xl font-serif text-royal-900 font-bold">$3,200</span>
+              </div>
+              <button onclick="quotePackage('Corporate Blue', 3200)" class="w-10 h-10 rounded-full bg-royal-900 text-white flex items-center justify-center hover:bg-gold-500 transition shadow-lg">
+                <i class='bx bx-right-arrow-alt text-2xl'></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cotizador" class="py-24 bg-white border-t border-slate-100">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col lg:flex-row shadow-2xl rounded-3xl overflow-hidden bg-white border border-slate-100">
+        
+        <div class="lg:w-1/3 bg-royal-900 p-10 text-white flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute -right-10 -top-10 w-40 h-40 bg-gold-500/20 rounded-full blur-3xl"></div>
+          
+          <div>
+            <h2 class="text-3xl font-serif mb-2">Arma tu Evento</h2>
+            <p class="text-blue-200 text-sm mb-8">Añade productos individuales a tu cotización.</p>
+            
+            <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm">
+              <p class="text-xs uppercase tracking-widest text-gold-400 mb-1">Total Estimado</p>
+              <div id="totalDisplay" class="text-5xl font-serif font-bold">$0.00</div>
+            </div>
+          </div>
+
+          <button onclick="sendWhatsAppOrder()" class="mt-8 w-full bg-whatsapp text-white py-4 rounded-sm font-bold flex items-center justify-center gap-2 hover:bg-green-600 transition shadow-lg group">
+            <i class='bx bxl-whatsapp text-xl group-hover:scale-125 transition'></i>
+            <span>SOLICITAR DISPONIBILIDAD</span>
+          </button>
+        </div>
+
+        <div class="lg:w-2/3 p-10 bg-slate-50/50 overflow-y-auto max-h-[600px]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="productsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ubicacion" class="py-0 relative h-[500px] flex flex-col lg:flex-row bg-slate-100">
+    <div class="lg:w-1/3 bg-white p-12 flex flex-col justify-center border-r border-slate-200 z-10 relative shadow-2xl">
+      <h2 class="text-3xl font-serif text-royal-900 mb-6">Visítanos</h2>
+      
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-royal-50 flex items-center justify-center text-royal-900">
+            <i class='bx bx-map text-xl'></i>
+          </div>
+          <div>
+            <p class="font-bold text-royal-900">Showroom León</p>
+            <p class="text-sm text-slate-500 mt-1">Sierra Negra #106, Col. Lomas de las Hilamas.<br>León, Guanajuato.</p>
+            <a href="https://maps.google.com/?q=Tallin+145+León+Gto" target="_blank" class="text-xs font-bold text-gold-500 mt-2 inline-block hover:underline">VER EN GOOGLE MAPS -></a>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-royal-50 flex items-center justify-center text-royal-900">
+            <i class='bx bx-phone text-xl'></i>
+          </div>
+          <div>
+            <p class="font-bold text-royal-900">Línea Directa</p>
+            <p class="text-sm text-slate-500 mt-1">Atención personalizada 24/7</p>
+            <a href="tel:+524778217435" class="text-lg font-serif text-royal-900 mt-1 block hover:text-gold-500 transition">477 821 7435</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
+    
+    <div id="chat-window" class="hidden w-[350px] bg-white rounded-2xl shadow-2xl flex flex-col mb-4 overflow-hidden border border-slate-200 transform transition-all duration-300 origin-bottom-right scale-95 opacity-0">
+      
+      <div class="bg-royal-900 p-4 flex justify-between items-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="flex items-center gap-3 relative z-10">
+          <div class="relative">
+            <img src="https://i.pravatar.cc/150?u=santiago_rente" class="w-10 h-10 rounded-full border-2 border-gold-400 object-cover">
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-royal-900 rounded-full"></span>
+          </div>
+          <div>
+            <p class="font-bold text-white text-sm">Santiago</p>
+            <p class="text-[10px] text-blue-200 uppercase tracking-wider">Senior Planner</p>
+          </div>
+        </div>
+        <button onclick="toggleChat()" class="text-white hover:text-gold-400"><i class='bx bx-x text-2xl'></i></button>
+      </div>
+
+      <div id="chat-content" class="h-[400px] overflow-y-auto p-4 bg-slate-50 space-y-3">
+        </div>
+
+      <div id="chat-options" class="px-4 py-2 bg-slate-50 flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide"></div>
+
+      <div class="p-3 bg-white border-t border-slate-100 flex gap-2">
+        <input type="text" id="chat-input" placeholder="Escribe tu consulta..." class="flex-1 bg-slate-100 rounded-full px-4 py-2 text-sm focus:ring-2 focus:ring-royal-900 outline-none text-slate-700">
+        <button onclick="handleUserMessage()" class="bg-royal-900 text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-gold-500 transition shadow-md">
+          <i class='bx bxs-send'></i>
+        </button>
+      </div>
+    </div>
+
+    <button onclick="toggleChat()" class="w-16 h-16 bg-royal-900 rounded-full shadow-2xl flex items-center justify-center border-4 border-white hover:scale-110 transition group relative">
+      <i class='bx bxs-message-dots text-3xl text-white group-hover:text-gold-400 transition'></i>
+      <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-white text-[10px] font-bold flex items-center justify-center animate-bounce">1</span>
+    </button>
+  </div>
+
+  <script>
+    // --- DATABASE PRODUCTOS ---
+    const products = [
+      { name: "Carpa 6x12 Luxury", price: 1200, icon: "bx-building" },
+      { name: "Carpa Eventos 6x6", price: 700.00, icon: "bx-store-alt" },
+      { name: "Carpa Premium 4x4", price: 450.00, icon: "bx-building-house" },
+      { name: "Carpa Garden 3x6", price: 500.00, icon: "bx-home" },
+      { name: "Mesa Parota", price: 200, icon: "bx-square" },
+      { name: "Mesa Redonda", price: 65, icon: "bx-circle" },
+      { name: "Mesa Rectangular", price: 80, icon: "bx-rectangle" },
+      { name: "Mesa Tablón Pro", price: 60.00, icon: "bx-minus" },
+      { name: "Silla Crossback", price: 45, icon: "bx-chair" },
+      { name: "Silla Tiffany", price: 35, icon: "bx-chair" },
+      { name: "Silla Plegable", price: 4.00, icon: "bx-chair" },
+      { name: "Loza Vajilla Premium", price: 18.00, icon: "bx-restaurant" },
+      { name: "Loza Vajilla Básica", price: 12.00, icon: "bx-restaurant" },
+      { name: "Copa Vidrio", price: 3.00, icon: "bx-wine" },
+      { name: "Copa Cristal", price: 5.00, icon: "bx-wine"},
+      { name: "Cubiertos Gold", price: 22.00, icon: "bx-knife" },
+      { name: "Cubiertos Premium", price: 16.00, icon: "bx-knife" },
+      { name: "Cubiertos Silver", price: 12.00, icon: "bx-knife" },
+      { name: "Mantelería Gold", price: 180, icon: "bx-layer" },
+      { name: "Mantelería Premium", price: 120, icon: "bx-layer" },
+      { name: "Mantelería Básica", price: 60, icon: "bx-layer" },
+      { name: "Pista de Baile (m2)", price: 150, icon: "bx-grid-alt" }
+    ];
+
+    // --- RENDERIZAR COTIZADOR ---
+    const grid = document.getElementById('productsGrid');
+    products.forEach(p => {
+      grid.innerHTML += `
+        <div class="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-100 hover:border-gold-400 transition shadow-sm group">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded bg-royal-50 text-royal-900 flex items-center justify-center group-hover:bg-royal-900 group-hover:text-white transition">
+              <i class='bx ${p.icon}'></i>
+            </div>
+            <div>
+              <p class="font-bold text-sm text-slate-700">${p.name}</p>
+              <p class="text-xs text-gold-500 font-bold">$${p.price}</p>
+            </div>
+          </div>
+          <input type="number" min="0" value="0" class="qty w-12 text-center border border-slate-200 rounded py-1 text-sm text-royal-900 font-bold"
+            onchange="calculateTotal()" data-price="${p.price}" data-name="${p.name}">
+        </div>
+      `;
+    });
+
+    function calculateTotal() {
+      let total = 0;
+      document.querySelectorAll('.qty').forEach(i => {
+        total += (parseInt(i.value) || 0) * parseFloat(i.dataset.price);
+      });
+      document.getElementById('totalDisplay').innerText = `$${total.toLocaleString('es-MX')}`;
+    }
+
+    function sendWhatsAppOrder() {
+      let msg = "Hola Santiago, me interesa esta cotización:\n\n";
+      let hasItems = false;
+      document.querySelectorAll('.qty').forEach(i => {
+        if(i.value > 0) {
+          msg += `• ${i.value}x ${i.dataset.name}\n`;
+          hasItems = true;
+        }
+      });
+      msg += `\nTotal: ${document.getElementById('totalDisplay').innerText}`;
+      if(hasItems) window.open(`https://wa.me/524778217435?text=${encodeURIComponent(msg)}`);
+      else alert("Por favor selecciona algún producto.");
+    }
+
+    function quotePackage(name, price) {
+        window.open(`https://wa.me/524778217435?text=${encodeURIComponent('Me interesa el paquete ' + name + ' de $' + price)}`);
+    }
+
+    // --- CHATBOT AVANZADO "SANTIAGO" ---
+    let chatStep = 0;
+    const chatContent = document.getElementById('chat-content');
+
+    function toggleChat() {
+      const win = document.getElementById('chat-window');
+      win.classList.toggle('hidden');
+      setTimeout(() => {
+        win.classList.toggle('opacity-0');
+        win.classList.toggle('scale-95');
+      }, 50);
+
+      if(!win.classList.contains('hidden') && chatContent.children.length === 0) {
+        botTypeAndSend("¡Hola! Soy Santiago. Estoy aquí para asegurarme de que tu evento sea perfecto. ¿Cómo puedo dirigirme a ti?", ["Cotizar", "Ubicación", "Hablar por WhatsApp"]);
+      }
+    }
+
+    function handleUserMessage() {
+      const input = document.getElementById('chat-input');
+      const txt = input.value.trim();
+      if(!txt) return;
+      
+      addMsg(txt, 'user');
+      input.value = '';
+      processLogic(txt);
+    }
+
+    function processLogic(txt) {
+      const lower = txt.toLowerCase();
+
+      // INTENCIONES DE NAVEGACIÓN (NIVEL MAXIMO)
+      if(lower.includes('mapa') || lower.includes('ubicacion') || lower.includes('donde') || lower.includes('dirección')) {
+        botTypeAndSend("Estamos ubicados en Sierra Negra #106, León Gto. Te abro el mapa ahora mismo...", ["Abrir Google Maps", "Volver al menú"]);
+        setTimeout(() => window.open('https://maps.google.com/?q=Sierra+Negra+106+León+Gto'), 2500);
+        return;
+      }
+      
+      if(lower.includes('whatsapp') || lower.includes('telefono') || lower.includes('llamar') || lower.includes('humano')) {
+        botTypeAndSend("Claro, te comunico directamente a mi línea personal de WhatsApp...", ["Abrir WhatsApp"]);
+        setTimeout(() => window.open('https://wa.me/524778217435'), 2000);
+        return;
+      }
+
+      // FLUJO CONVERSACIONAL
+      if(chatStep === 0) {
+        botTypeAndSend(`Mucho gusto ${txt}. ¿Qué tipo de celebración estás planeando?`, ["Boda", "Empresarial", "Social", "XV Años"]);
+        chatStep = 1;
+      } else if (chatStep === 1) {
+        botTypeAndSend(`Excelente elección. Para ${txt} tenemos montajes increíbles con nuestra carpa Luxury. ¿Te gustaría ver precios o prefieres ver la ubicación?`, ["Ver Paquetes", "Ver Ubicación", "Hablar con Agente"]);
+        chatStep = 2;
+      } else {
+        if(lower.includes('precio') || lower.includes('paquete')) {
+          botTypeAndSend("Puedes ver nuestros paquetes arriba. ¿Quieres que te ayude a cotizar algo específico?", ["Ir al Cotizador", "Hablar por WhatsApp"]);
+        } else {
+          botTypeAndSend("Entiendo. Para darte la mejor atención, ¿te parece si seguimos por WhatsApp?", ["Sí, abrir WhatsApp", "No, seguir aquí"]);
+        }
+      }
+    }
+
+    function addMsg(txt, sender) {
+      const div = document.createElement('div');
+      if(sender === 'bot') {
+        div.className = 'flex gap-2';
+        div.innerHTML = `
+          <img src="https://i.pravatar.cc/150?u=santiago_rente" class="w-8 h-8 rounded-full border border-slate-200 mt-1">
+          <div class="bg-white border border-slate-100 p-3 rounded-2xl rounded-tl-none text-slate-600 text-sm shadow-sm max-w-[80%]">${txt}</div>
+        `;
+      } else {
+        div.className = 'flex justify-end';
+        div.innerHTML = `<div class="bg-royal-900 text-white p-3 rounded-2xl rounded-tr-none text-sm shadow-md max-w-[80%]">${txt}</div>`;
+      }
+      chatContent.appendChild(div);
+      chatContent.scrollTop = chatContent.scrollHeight;
+    }
+
+    function botTypeAndSend(txt, options = []) {
+      const loadingId = 'typing-' + Date.now();
+      const loadingDiv = document.createElement('div');
+      loadingDiv.id = loadingId;
+      loadingDiv.className = 'flex gap-2';
+      loadingDiv.innerHTML = `
+        <img src="https://i.pravatar.cc/150?u=santiago_rente" class="w-8 h-8 rounded-full border border-slate-200 mt-1">
+        <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-100 flex gap-1 items-center">
+          <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></div>
+          <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+          <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+        </div>
+      `;
+      chatContent.appendChild(loadingDiv);
+      chatContent.scrollTop = chatContent.scrollHeight;
+
+      setTimeout(() => {
+        document.getElementById(loadingId).remove();
+        addMsg(txt, 'bot');
+        renderOptions(options);
+      }, 1200);
+    }
+
+    function renderOptions(opts) {
+      const cont = document.getElementById('chat-options');
+      cont.innerHTML = opts.map(o => 
+        `<button onclick="document.getElementById('chat-input').value='${o}'; handleUserMessage()" class="px-3 py-1 bg-white border border-royal-900 text-royal-900 text-xs rounded-full hover:bg-royal-900 hover:text-white transition whitespace-nowrap shadow-sm">${o}</button>`
+      ).join('');
+    }
+  </script>
+</body>
+</html>

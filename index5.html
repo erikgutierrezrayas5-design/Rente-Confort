@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RENTE CONFORT PAQUETES</title>
+    <meta
+      name="description"
+      content="Especialistas en montaje de eventos de alto nivel en León, Gto. Carpas, mobiliario luxury y logística impecable."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Playfair Display"', "serif"],
+              sans: ['"Lato"', "sans-serif"],
+            },
+            colors: {
+              royal: {
+                800: "#001b3d" /* Azul Profundo Institucional */,
+                900: "#001229" /* Casi negro, muy elegante */,
+              },
+              gold: {
+                300: "#f0e68c",
+                400: "#d4af37" /* Oro Metálico */,
+                500: "#b8860b" /* Oro Antiguo */,
+                600: "#8a6508",
+              },
+              silver: "#f1f5f9",
+            },
+            backgroundImage: {
+              pattern:
+                "url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')",
+            },
+            animation: {
+              "fade-up": "fadeUp 1s ease-out forwards",
+            },
+            keyframes: {
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(40px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Estilos Base de Lujo */
+      body {
+        background-color: #f8fafc;
+        color: #1e293b;
+        overflow-x: hidden;
+      }
+
+      .gold-gradient-text {
+        background: linear-gradient(
+          135deg,
+          #b8860b 0%,
+          #d4af37 50%,
+          #f0e68c 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .glass-nav {
+        background: rgba(0, 18, 41, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      }
+
+      /* Efectos de Interacción */
+      .hover-card {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .hover-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Scroll Reveal Class */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s ease;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #001229;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, #001b3d, #d4af37);
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <nav
+      class="fixed top-0 w-full z-50 glass-nav transition-all duration-300"
+      id="navbar"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a class="flex items-center gap-3 group cursor-pointer" href="#inicio">
+          <div
+            class="w-10 h-10 border border-gold-400 flex items-center justify-center rounded-sm bg-royal-900 group-hover:bg-gold-400 transition duration-500"
+          >
+            <i
+              class="bx bxs-crown text-gold-400 text-xl group-hover:text-royal-900"
+            ></i>
+          </div>
+          <div class="leading-none">
+            <h1 class="text-xl font-serif font-bold text-white tracking-widest">
+              RENTE<span class="text-gold-400">CONFORT</span>
+            </h1>
+            <p class="text-[9px] text-slate-400 uppercase tracking-[0.3em]">
+              Eventos de Clase Mundial
+            </p>
+          </div>
+        </a>
+
+        <div
+          class="hidden lg:flex items-center gap-10 text-xs font-bold uppercase tracking-[0.2em] text-slate-300"
+        >
+          <a
+            class="hover:text-gold-400 transition-colors relative group"
+            href="#filosofia"
+          >
+            Nosotros
+            <span
+              class="absolute -bottom-2 left-0 w-0 h-px bg-gold-400 transition-all group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            class="hover:text-gold-400 transition-colors relative group"
+            href="#coleccion"
+          >
+            Colección
+            <span
+              class="absolute -bottom-2 left-0 w-0 h-px bg-gold-400 transition-all group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            class="hover:text-gold-400 transition-colors relative group"
+            href="#cotizador"
+          >
+            Cotizador
+            <span
+              class="absolute -bottom-2 left-0 w-0 h-px bg-gold-400 transition-all group-hover:w-full"
+            ></span>
+          </a>
+          <a
+            class="hover:text-gold-400 transition-colors relative group"
+            href="#ubicacion"
+          >
+            Ubicación
+            <span
+              class="absolute -bottom-2 left-0 w-0 h-px bg-gold-400 transition-all group-hover:w-full"
+            ></span>
+          </a>
+        </div>
+
+        <a
+          href="https://wa.me/524778217435"
+          target="_blank"
+          class="hidden md:flex items-center gap-3 px-6 py-3 bg-gold-500 hover:bg-white text-royal-900 font-bold text-xs uppercase tracking-widest rounded-sm transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-none"
+        >
+          <span>Concierge 24/7</span>
+          <i class="bx bxl-whatsapp text-lg"></i>
+        </a>
+      </div>
+    </nav>
+
+    <header
+      id="inicio"
+      class="relative h-screen flex items-center justify-center overflow-hidden bg-royal-900"
+    >
+      <div class="absolute inset-0 z-0">
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-royal-900/90 via-royal-900/50 to-royal-900/90 z-10"
+        ></div>
+        <img
+          src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=2000"
+          class="w-full h-full object-cover animate-[float_20s_infinite_ease-in-out] scale-110"
+          alt="Evento de Lujo"
+        />
+      </div>
+
+      <div
+        class="container mx-auto px-6 relative z-20 text-center text-white mt-10"
+      >
+        <div
+          class="inline-flex items-center gap-4 mb-6 opacity-0 animate-fade-up border-b border-gold-400/30 pb-2"
+        >
+          <span class="text-gold-400 text-lg"><i class="bx bxs-star"></i></span>
+          <span class="text-xs uppercase tracking-[0.4em] text-slate-300"
+            >Excelencia en León, Gto.</span
+          >
+          <span class="text-gold-400 text-lg"><i class="bx bxs-star"></i></span>
+        </div>
+
+        <h1
+          class="text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-tight mb-8 opacity-0 animate-fade-up"
+          style="animation-delay: 0.2s"
+        >
+          Más que mobiliario, <br />
+          creamos <span class="gold-gradient-text italic">atmósferas.</span>
+        </h1>
+
+        <p
+          class="max-w-2xl mx-auto text-slate-300 text-lg font-light leading-relaxed mb-12 opacity-0 animate-fade-up"
+          style="animation-delay: 0.4s"
+        >
+          Fusionamos logística de precisión con diseño de alta gama. Desde una
+          carpa estructural hasta la vajilla más fina, orquestamos cada detalle
+          en <strong>Agua Azul</strong> y todo el Bajío.
+        </p>
+
+        <div
+          class="flex flex-col sm:flex-row justify-center gap-6 opacity-0 animate-fade-up"
+          style="animation-delay: 0.6s"
+        >
+          <button
+            onclick="document.getElementById('cotizador').scrollIntoView()"
+            class="px-10 py-4 bg-white text-royal-900 font-bold text-xs tracking-widest uppercase hover:bg-gold-400 transition-colors duration-300"
+          >
+            Iniciar Proyecto
+          </button>
+          <button
+            onclick="toggleChat()"
+            class="px-10 py-4 border border-gold-400/50 text-gold-400 font-bold text-xs tracking-widest uppercase hover:bg-gold-400/10 transition-colors duration-300 backdrop-blur-sm"
+          >
+            Hablar con Santiago
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section id="coleccion" class="py-24 bg-royal-900 text-white bg-pattern">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-20 reveal">
+          <span
+            class="text-gold-400 text-xs font-bold uppercase tracking-[0.3em]"
+            >Curaduría Exclusiva</span
+          >
+          <h2 class="text-4xl md:text-5xl font-serif mt-4 mb-6">
+            Paquetes Signature
+          </h2>
+          <div class="w-24 h-0.5 bg-gold-400 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="group bg-royal-800 rounded-sm overflow-hidden hover-card reveal border border-white/5 hover:border-gold-400/50"
+          >
+            <div class="h-72 overflow-hidden relative">
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition duration-500 z-10"
+              ></div>
+              <img
+                src="https://images.unsplash.com/photo-1519225421980-715cb0202128?auto=format&fit=crop&q=80&w=800"
+                class="w-full h-full object-cover transition transform group-hover:scale-110 duration-700"
+              />
+              <div class="absolute bottom-0 left-0 p-6 z-20">
+                <span
+                  class="bg-gold-500 text-royal-900 text-[10px] font-bold px-3 py-1 uppercase tracking-widest"
+                  >Boda & Gala</span
+                >
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-serif mb-2">Grandeur Royale</h3>
+              <p class="text-slate-400 text-sm mb-6 h-12 overflow-hidden">
+                Diseñado para impresionar. Estructuras monumentales y acabados
+                finos para hasta 100 invitados.
+              </p>
+
+              <div class="space-y-4 mb-8 border-t border-white/10 pt-6">
+                <div class="flex items-center gap-3">
+                  <i class="bx bxs-bank text-gold-400"></i>
+                  <span class="text-sm text-slate-300"
+                    >Carpa Estructural 6x12m (Drapeada)</span
+                  >
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="bx bxs-grid text-gold-400"></i>
+                  <span class="text-sm text-slate-300"
+                    >Mesas Imperiales de Parota</span
+                  >
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="bx bxs-wine text-gold-400"></i>
+                  <span class="text-sm text-slate-300"
+                    >Vajilla Porcelana & Cristal</span
+                  >
+                </div>
+              </div>
+
+              <div class="flex justify-between items-end">
+                <div>
+                  <p class="text-xs text-slate-500 uppercase">
+                    Inversión desde
+                  </p>
+                  <p class="text-3xl font-serif text-gold-400">$5,800</p>
+                </div>
+                <button
+                  onclick="quoteSpecific('Grandeur Royale', 5800)"
+                  class="text-white border-b border-gold-400 hover:text-gold-400 transition pb-1 text-sm font-bold uppercase tracking-widest"
+                >
+                  Reservar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group bg-white text-royal-900 rounded-sm overflow-hidden hover-card reveal transform md:-translate-y-8 shadow-2xl relative z-10"
+          >
+            <div class="h-72 overflow-hidden relative">
+              <img
+                src="https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?auto=format&fit=crop&q=80&w=800"
+                class="w-full h-full object-cover transition transform group-hover:scale-110 duration-700"
+              />
+              <div class="absolute bottom-0 left-0 p-6 z-20">
+                <span
+                  class="bg-royal-900 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest"
+                  >Social & Familiar</span
+                >
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-serif mb-2">Garden Intimacy</h3>
+              <p class="text-slate-600 text-sm mb-6 h-12 overflow-hidden">
+                La calidez perfecta para bautizos o comidas. Equilibrio entre
+                confort y naturaleza.
+              </p>
+
+              <div class="space-y-4 mb-8 border-t border-slate-100 pt-6">
+                <div class="flex items-center gap-3">
+                  <i class="bx bxs-home text-royal-900"></i>
+                  <span class="text-sm text-slate-600">Carpa Árabe 6x6m</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="bx bxs-group text-royal-900"></i>
+                  <span class="text-sm text-slate-600"
+                    >50 Sillas Tiffany Blancas</span
+                  >
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="bx bxs-bowl-hot text-royal-900"></i>
+                  <span class="text-sm text-slate-600">Mantelería de Lino</span>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-end">
+                <div>
+                  <p class="text-xs text-slate-400 uppercase">
+                    Inversión desde
+                  </p>
+                  <p class="text-3xl font-serif text-royal-900">$2,499</p>
+                </div>
+                <button
+                  onclick="quoteSpecific('Garden Intimacy', 2499)"
+                  class="text-royal-900 border-b border-royal-900 hover:text-gold-500 hover:border-gold-500 transition pb-1 text-sm font-bold uppercase tracking-widest"
+                >
+                  Reservar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="group bg-royal-800 rounded-sm overflow-hidden hover-card reveal border border-white/5 hover:border-gold-400/50"
+          >
+            <div class="h-72 overflow-hidden relative">
+              <div
+                class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition duration-500 z-10"
+              ></div>
+              <img
+                src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=800"
+                class="w-full h-full object-cover transition transform group-hover:scale-110 duration-700"
+              />
+              <div class="absolute bottom-0 left-0 p-6 z-20">
+                <span
+                  class="bg-slate-500 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest"
+                  >Corporativo</span
+                >
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-serif mb-2">Executive Summit</h3>
+              <p class="text-slate-400 text-sm mb-6 h-12 overflow-hidden">
+                Funcionalidad premium para conferencias. Imagen impecable para
+                tu marca.
+              </p>
+
+              <div class="space-y-4 mb-8 border-t border-white/10 pt-6">
+                <div class="flex items-center gap-3">
+                  <i class="bx bxs-briefcase text-gold-400"></i>
+                  <span class="text-sm text-slate-300"
+                    >Auditorio para 100 Pax</span
+                  >
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="bx bxs-microphone text-gold-400"></i>
+                  <span class="text-sm text-slate-300">Podium & Presidium</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <i class="bx bxs-coffee text-gold-400"></i>
+                  <span class="text-sm text-slate-300"
+                    >Estación Coffee Break</span
+                  >
+                </div>
+              </div>
+
+              <div class="flex justify-between items-end">
+                <div>
+                  <p class="text-xs text-slate-500 uppercase">
+                    Inversión desde
+                  </p>
+                  <p class="text-3xl font-serif text-gold-400">$3,200</p>
+                </div>
+                <button
+                  onclick="quoteSpecific('Executive Summit', 3200)"
+                  class="text-white border-b border-gold-400 hover:text-gold-400 transition pb-1 text-sm font-bold uppercase tracking-widest"
+                >
+                  Reservar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cotizador" class="py-24 bg-slate-50 border-t border-slate-200">
+      <div class="container mx-auto px-6">
+        <div
+          class="max-w-7xl mx-auto flex flex-col lg:flex-row shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] rounded-3xl overflow-hidden reveal"
+        >
+          <div class="lg:w-1/3 bg-royal-900 p-12 text-white relative">
+            <div
+              class="absolute top-0 right-0 w-64 h-64 bg-gold-400/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"
+            ></div>
+
+            <h2 class="text-3xl font-serif mb-4">Cotizador Inteligente</h2>
+            <p class="text-slate-400 text-sm mb-10 leading-relaxed">
+              Selecciona los elementos individuales para personalizar tu evento.
+              Precios actualizados al 2026.
+            </p>
+
+            <div
+              class="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 mb-8"
+            >
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-xs uppercase tracking-widest text-gold-400"
+                  >Total Estimado</span
+                >
+                <i class="bx bxs-calculator text-gold-400 text-xl"></i>
+              </div>
+              <div
+                id="total-display"
+                class="text-5xl font-serif font-bold text-white tracking-tight"
+              >
+                $0.00
+              </div>
+              <div class="text-[10px] text-slate-500 mt-2">
+                *IVA no incluido. Transporte según zona.
+              </div>
+            </div>
+
+            <button
+              onclick="sendOrder()"
+              class="w-full bg-gold-500 hover:bg-white hover:text-royal-900 text-royal-900 font-bold py-4 rounded-sm transition duration-300 flex items-center justify-center gap-3 uppercase tracking-wider text-xs shadow-lg"
+            >
+              <span>Verificar Disponibilidad</span>
+              <i class="bx bx-right-arrow-alt text-xl"></i>
+            </button>
+          </div>
+
+          <div class="lg:w-2/3 bg-white p-12 overflow-y-auto max-h-[700px]">
+            <h3
+              class="text-royal-900 font-bold text-lg mb-6 border-b border-slate-100 pb-2"
+            >
+              Catálogo de Elementos
+            </h3>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-6"
+              id="products-list"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-6 text-center">
+        <i class="bx bxs-quote-alt-left text-4xl text-slate-200 mb-6"></i>
+        <h2 class="text-2xl font-serif text-royal-900 mb-12 italic">
+          "La atención al detalle de Santiago y su equipo en Agua Azul fue
+          impecable.<br />La boda salió mejor de lo que imaginamos."
+        </h2>
+        <div class="flex justify-center items-center gap-4">
+          <img
+            src="https://i.pravatar.cc/100?img=5"
+            class="w-12 h-12 rounded-full border-2 border-gold-400 p-0.5"
+          />
+          <div class="text-left">
+            <p class="font-bold text-royal-900 text-sm">Gabriela & David</p>
+            <p class="text-xs text-slate-500 uppercase tracking-wider">
+              Boda en León, Dic 2025
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="ubicacion"
+      class="relative h-[600px] flex flex-col lg:flex-row"
+    >
+      <div
+        class="lg:w-1/3 bg-royal-900 p-12 lg:p-16 flex flex-col justify-center relative z-10 shadow-2xl"
+      >
+        <h2 class="text-4xl font-serif text-white mb-8">Encuéntranos</h2>
+
+        <div class="space-y-8">
+          <div class="flex gap-4 group">
+            <div
+              class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center rounded-sm text-gold-400 group-hover:bg-gold-400 group-hover:text-royal-900 transition duration-300"
+            >
+              <i class="bx bx-map text-2xl"></i>
+            </div>
+            <div>
+              <p
+                class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-1"
+              >
+                Showroom & Bodega
+              </p>
+              <p class="text-white text-lg font-serif">Calle Tallin 145</p>
+              <p class="text-slate-400">Col. Agua Azul, León, Guanajuato.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 group">
+            <div
+              class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center rounded-sm text-gold-400 group-hover:bg-gold-400 group-hover:text-royal-900 transition duration-300"
+            >
+              <i class="bx bx-phone text-2xl"></i>
+            </div>
+            <div>
+              <p
+                class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-1"
+              >
+                Línea Directa
+              </p>
+              <a
+                href="https://wa.me/524778217435"
+                class="text-white text-lg font-serif hover:text-gold-400 transition"
+                >477 821 7435</a
+              >
+              <p class="text-slate-400 text-sm">
+                Atención inmediata (Santiago)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="mt-12 pt-8 border-t border-white/10 flex gap-6 text-2xl text-slate-500"
+        >
+          <a href="#" class="hover:text-gold-400 transition"
+            ><i class="bx bxl-instagram"></i
+          ></a>
+          <a href="#" class="hover:text-gold-400 transition"
+            ><i class="bx bxl-facebook"></i
+          ></a>
+          <a href="#" class="hover:text-gold-400 transition"
+            ><i class="bx bxl-pinterest"></i
+          ></a>
+        </div>
+      </div>
+
+      <div class="lg:w-2/3 bg-slate-200 h-full relative map-grayscale">
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        >
+          <div
+            class="bg-royal-900 text-white px-4 py-2 rounded shadow-xl text-xs font-bold mb-2 text-center whitespace-nowrap"
+          >
+            RENTE CONFORT<br /><span class="text-gold-400 font-normal"
+              >Sede Central</span
+            >
+          </div>
+          <i
+            class="bx bxs-map text-5xl text-royal-900 drop-shadow-2xl flex justify-center"
+          ></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="lg:w-2/3 bg-slate-200 h-full relative overflow-hidden">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2520.647167732688!2d-0.1461971!3d50.8209805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875850e694ea8b3%3A0xc70f278a9e08a1ad!2sThe%20Grand%20Brighton!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"
+        width="100%"
+        height="100%"
+        style="
+          border: 0;
+          filter: grayscale(10%) invert(92%) sepia(10%) saturate(100%)
+            hue-rotate(180deg) brightness(95%) contrast(90%);
+        "
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+      <div class="absolute inset-0 bg-blue-900/10 pointer-events-none"></div>
+    </div>
+
+    <div class="flex space-x-4 mt-4">
+      <a href="#" class="hover:text-gold-400 transition text-2xl"
+        ><i class="bx bxl-instagram"></i
+      ></a>
+      <a href="#" class="hover:text-gold-400 transition text-2xl"
+        ><i class="bx bxl-facebook"></i
+      ></a>
+      <a href="#" class="hover:text-gold-400 transition text-2xl"
+        ><i class="bx bxl-pinterest"></i
+      ></a>
+    </div>
+
+    <footer
+      class="bg-royal-900 text-slate-500 py-6 border-t border-white/5 text-center text-xs"
+    >
+      <div class="container mx-auto">
+        <p>&copy; 2026 Rente Confort. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+    <a
+      href="index3.html"
+      class="bg-royal-900 mx-auto my-2 text-white px-4 py-2 rounded"
+      >Ir a opción 3</a
+    >
+
+    <div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
+      <div
+        id="chat-window"
+        class="hidden w-[380px] bg-white rounded-2xl shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)] flex flex-col mb-4 overflow-hidden border border-slate-200 transform transition-all duration-300 origin-bottom-right scale-95 opacity-0"
+      >
+        <div
+          class="bg-royal-900 p-5 flex justify-between items-center border-b border-gold-500/30 relative overflow-hidden"
+        >
+          <div class="absolute inset-0 bg-pattern opacity-10"></div>
+          <div class="flex items-center gap-4 relative z-10">
+            <div class="relative">
+              <img
+                src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?w=200"
+                class="w-12 h-12 rounded-full border-2 border-gold-400 object-cover shadow-md"
+              />
+              <span
+                class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-royal-900 rounded-full animate-pulse"
+              ></span>
+            </div>
+            <div>
+              <p class="font-serif font-bold text-white text-lg">Santiago</p>
+              <p
+                class="text-[10px] text-gold-300 uppercase tracking-wider font-bold"
+              >
+                Gerente de Eventos
+              </p>
+            </div>
+          </div>
+          <button
+            onclick="toggleChat()"
+            class="text-slate-400 hover:text-white transition"
+          >
+            <i class="bx bx-x text-2xl"></i>
+          </button>
+        </div>
+
+        <div
+          id="chat-content"
+          class="h-[450px] overflow-y-auto p-5 bg-slate-50 space-y-4"
+        ></div>
+
+        <div
+          id="chat-suggestions"
+          class="px-5 py-3 bg-white border-t border-slate-100 flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide"
+        ></div>
+
+        <div class="p-4 bg-white flex gap-2 items-center">
+          <input
+            type="text"
+            id="chat-input"
+            placeholder="Escribe tu consulta..."
+            class="flex-1 bg-slate-100 rounded-full px-5 py-3 text-sm focus:ring-1 focus:ring-gold-500 focus:bg-white border-none outline-none transition text-slate-700 placeholder-slate-400"
+            onkeypress="if(event.key === 'Enter') handleUserMessage()"
+          />
+          <button
+            onclick="handleUserMessage()"
+            class="w-11 h-11 bg-royal-900 text-white rounded-full flex items-center justify-center hover:bg-gold-500 transition shadow-lg transform active:scale-95"
+          >
+            <i class="bx bxs-send"></i>
+          </button>
+        </div>
+      </div>
+
+      <button
+        onclick="toggleChat()"
+        class="group relative w-16 h-16 bg-royal-900 rounded-full shadow-2xl flex items-center justify-center border-2 border-gold-400/50 hover:scale-110 transition duration-300"
+      >
+        <div
+          class="absolute inset-0 rounded-full bg-gold-400 opacity-0 group-hover:opacity-20 transition animate-pulse"
+        ></div>
+        <i class="bx bxs-message-square-dots text-3xl text-white"></i>
+        <span
+          class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-white text-[10px] font-bold flex items-center justify-center shadow-sm"
+          >1</span
+        >
+      </button>
+    </div>
+
+    <script>
+      // --- ANIMACIONES SCROLL ---
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      // --- DATA PRODUCTOS ---
+      const inventory = [
+        {
+          id: 1,
+          name: "Carpa Estructural 6x12m",
+          price: 1200,
+          category: "Carpas",
+          icon: "bx-building-house",
+        },
+        {
+          id: 2,
+          name: "Carpa Árabe 6x6m",
+          price: 700,
+          category: "Carpas",
+          icon: "bx-home-alt-2",
+        },
+        {
+          id: 3,
+          name: "Carpa 3x6m Garden",
+          price: 500,
+          category: "Carpas",
+          icon: "bx-sun",
+        },
+        {
+          id: 4,
+          name: "Mesa Parota Imperial",
+          price: 350,
+          category: "Mobiliario",
+          icon: "bx-layout",
+        },
+        {
+          id: 5,
+          name: "Mesa Redonda + Mantel",
+          price: 150,
+          category: "Mobiliario",
+          icon: "bx-circle",
+        },
+        {
+          id: 6,
+          name: "Silla Crossback Madera",
+          price: 45,
+          category: "Sillas",
+          icon: "bx-chair",
+        },
+        {
+          id: 7,
+          name: "Silla Tiffany Gold/White",
+          price: 35,
+          category: "Sillas",
+          icon: "bx-chair",
+        },
+        {
+          id: 8,
+          name: "Plato Base Pewter",
+          price: 15,
+          category: "Loza",
+          icon: "bx-dish",
+        },
+        {
+          id: 9,
+          name: "Kit Cubiertos Oro",
+          price: 12,
+          category: "Loza",
+          icon: "bx-restaurant",
+        },
+        {
+          id: 10,
+          name: "Copa Cristal Vino",
+          price: 8,
+          category: "Cristalería",
+          icon: "bx-wine",
+        },
+      ];
+
+      // --- RENDERIZAR PRODUCTOS ---
+      const listContainer = document.getElementById("products-list");
+      inventory.forEach((item) => {
+        listContainer.innerHTML += `
+        <div class="flex items-center justify-between p-4 rounded-xl border border-slate-100 hover:border-gold-400/50 hover:bg-slate-50 transition duration-300 group">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-royal-900/5 flex items-center justify-center text-royal-900 group-hover:bg-royal-900 group-hover:text-gold-400 transition">
+              <i class='bx ${item.icon} text-xl'></i>
+            </div>
+            <div>
+              <p class="font-bold text-royal-900 text-sm">${item.name}</p>
+              <p class="text-xs text-gold-500 font-bold tracking-wider">$${item.price.toFixed(2)} MXN</p>
+            </div>
+          </div>
+          <input type="number" min="0" value="0" 
+                 class="qty-input w-16 text-center py-2 rounded-lg border border-slate-200 text-royal-900 font-bold focus:ring-1 focus:ring-gold-400 outline-none bg-white"
+                 onchange="updateTotal()" data-price="${item.price}" data-name="${item.name}">
+        </div>
+      `;
+      });
+
+      function updateTotal() {
+        let total = 0;
+        document.querySelectorAll(".qty-input").forEach((input) => {
+          const qty = parseInt(input.value) || 0;
+          total += qty * parseFloat(input.dataset.price);
+        });
+        document.getElementById("total-display").innerText =
+          `$${total.toLocaleString("es-MX", { minimumFractionDigits: 2 })}`;
+      }
+
+      function sendOrder() {
+        const total = document.getElementById("total-display").innerText;
+        if (total === "$0.00") {
+          alert(
+            "Por favor selecciona al menos un artículo para verificar disponibilidad.",
+          );
+          return;
+        }
+        let msg =
+          "👋 Hola Santiago, me gustaría verificar disponibilidad para este pedido:\n\n";
+        document.querySelectorAll(".qty-input").forEach((input) => {
+          if (input.value > 0)
+            msg += `▪ ${input.value}x ${input.dataset.name}\n`;
+        });
+        msg += `\n💰 *Inversión Estimada: ${total}*`;
+        window.open(
+          `https://wa.me/524778217435?text=${encodeURIComponent(msg)}`,
+        );
+      }
+
+      function quoteSpecific(packName, price) {
+        const msg = `👋 Hola Santiago, estoy interesado en el paquete *${packName}* con un valor de $${price}. ¿Está disponible para mi fecha?`;
+        window.open(
+          `https://wa.me/524778217435?text=${encodeURIComponent(msg)}`,
+        );
+      }
+
+      // --- CHATBOT SANTIAGO LOGIC ---
+      let chatHistory = [];
+
+      function toggleChat() {
+        const win = document.getElementById("chat-window");
+        win.classList.toggle("hidden");
+        setTimeout(() => {
+          win.classList.toggle("opacity-0");
+          win.classList.toggle("scale-95");
+        }, 50);
+
+        if (!win.classList.contains("hidden") && chatHistory.length === 0) {
+          botReply(
+            "¡Bienvenido a Rente Confort! Soy Santiago, tu asesor personal. ¿En qué puedo apoyarte hoy?",
+            ["Cotizar Evento", "Ver Ubicación", "Hablar por WhatsApp"],
+          );
+        }
+      }
+
+      function handleUserMessage() {
+        const input = document.getElementById("chat-input");
+        const text = input.value.trim();
+        if (!text) return;
+
+        addUserMsg(text);
+        input.value = "";
+
+        setTimeout(() => processBotLogic(text), 600);
+      }
+
+      function addUserMsg(text) {
+        const div = document.createElement("div");
+        div.className = "flex justify-end animate-fade-up";
+        div.innerHTML = `<div class="bg-royal-900 text-white px-4 py-3 rounded-2xl rounded-tr-none shadow-md max-w-[85%] text-sm leading-relaxed">${text}</div>`;
+        document.getElementById("chat-content").appendChild(div);
+        scrollToBottom();
+        chatHistory.push({ role: "user", content: text });
+      }
+
+      function botReply(text, options = []) {
+        const container = document.getElementById("chat-content");
+
+        // Indicador escribiendo
+        const typingId = "typing-" + Date.now();
+        const typingDiv = document.createElement("div");
+        typingDiv.id = typingId;
+        typingDiv.className = "flex gap-3 mb-2";
+        typingDiv.innerHTML = `
+        <img src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?w=200" class="w-8 h-8 rounded-full border border-slate-200 self-end">
+        <div class="bg-white border border-slate-200 px-4 py-3 rounded-2xl rounded-tl-none shadow-sm flex gap-1 items-center">
+          <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></div>
+          <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-75"></div>
+          <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-150"></div>
+        </div>
+      `;
+        container.appendChild(typingDiv);
+        scrollToBottom();
+
+        setTimeout(() => {
+          document.getElementById(typingId).remove();
+          const msgDiv = document.createElement("div");
+          msgDiv.className = "flex gap-3 animate-fade-up";
+          msgDiv.innerHTML = `
+          <img src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?w=200" class="w-8 h-8 rounded-full border border-slate-200 self-end">
+          <div class="bg-white border border-slate-200 text-slate-700 px-4 py-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] text-sm leading-relaxed">
+            ${text}
+          </div>
+        `;
+          container.appendChild(msgDiv);
+          renderSuggestions(options);
+          scrollToBottom();
+        }, 1000); // Retraso artificial para realismo
+      }
+
+      function renderSuggestions(opts) {
+        const container = document.getElementById("chat-suggestions");
+        container.innerHTML = opts
+          .map(
+            (o) => `
+        <button onclick="document.getElementById('chat-input').value='${o}'; handleUserMessage()" 
+          class="px-4 py-2 bg-white border border-royal-900 text-royal-900 text-xs font-bold rounded-full hover:bg-royal-900 hover:text-gold-400 transition shadow-sm whitespace-nowrap">
+          ${o}
+        </button>
+      `,
+          )
+          .join("");
+      }
+
+      function scrollToBottom() {
+        const el = document.getElementById("chat-content");
+        el.scrollTop = el.scrollHeight;
+      }
+
+      function processBotLogic(text) {
+        const lower = text.toLowerCase();
+
+        if (
+          lower.includes("ubicacion") ||
+          lower.includes("donde") ||
+          lower.includes("mapa") ||
+          lower.includes("direccion") ||
+          lower.includes("calle")
+        ) {
+          botReply(
+            "Nos encontramos en la **Calle Tallin 145, Colonia Agua Azul**, en León. Es nuestra sede central y showroom.",
+            ["Abrir Google Maps", "Agendar Cita"],
+          );
+          if (lower.includes("abrir") || lower.includes("google"))
+            window.open(
+              "https://maps.google.com/maps?q=Calle+Tallin+145,+Agua+Azul,+Leon,+Gto",
+            );
+          return;
+        }
+
+        if (
+          lower.includes("cotizar") ||
+          lower.includes("precio") ||
+          lower.includes("costo")
+        ) {
+          botReply(
+            "Claro. Puedes ver nuestros paquetes Signature arriba o usar el cotizador manual. ¿Qué tipo de evento tienes en mente?",
+            ["Boda", "Empresarial", "Social"],
+          );
+          return;
+        }
+
+        if (lower.includes("boda") || lower.includes("matrimonio")) {
+          botReply(
+            "¡Felicidades! Para bodas recomendamos el paquete *Grandeur Royale*. Incluye carpa drapeada y mobiliario de parota. ¿Te gustaría ver fotos o checar disponibilidad?",
+            ["Ver Disponibilidad", "Ver Otros Paquetes"],
+          );
+          return;
+        }
+
+        if (
+          lower.includes("whatsapp") ||
+          lower.includes("telefono") ||
+          lower.includes("celular")
+        ) {
+          botReply(
+            "Te atiendo personalmente en mi línea directa de WhatsApp: 477 821 7435. ¿Te abro el chat?",
+            ["Sí, abrir WhatsApp"],
+          );
+          return;
+        }
+
+        if (lower.includes("sí") || lower.includes("si")) {
+          window.open("https://wa.me/524778217435");
+          botReply("¡Listo! Te espero en WhatsApp.");
+          return;
+        }
+
+        // Default
+        botReply(
+          "Entiendo. Para darte un servicio de excelencia, ¿te parece bien si continuamos la conversación por WhatsApp? Así puedo enviarte catálogos PDF.",
+          ["Contactar por WhatsApp", "Ver Ubicación"],
+        );
+      }
+    </script>
+  </body>
+</html>

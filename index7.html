@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RENTE CONFORT | Arquitectura de Eventos & Mobiliario Luxury</title>
+  <meta name="description" content="Especialistas en montaje de eventos de alto nivel en León, Gto. Carpas, mobiliario luxury y logística impecable.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Lato"', 'sans-serif'],
+          },
+          colors: {
+            royal: { 800: '#001b3d', 900: '#001229' },
+            gold: { 300: '#f0e68c', 400: '#d4af37', 500: '#b8860b', 600: '#8a6508' },
+            surface: '#f8fafc'
+          },
+          backgroundImage: {
+            'pattern': "url('https://www.transparenttextures.com/patterns/cubes.png')",
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.6s ease-out forwards',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'bounce-slow': 'bounce 2s infinite',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
+    .gold-gradient-text {
+        background: linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #f0e68c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .glass-nav { background: rgba(0, 18, 41, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+    .hover-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .hover-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.2); }
+    
+    /* Scrollbars */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #001229; }
+    ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 3px; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Reveal Animation Classes */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    .reviews-section {
+        padding: 40px 0;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: var(--primary);
+    }
+
+    /* Contenedor del Slider */
+    .slider-container {
+        width: 100%;
+        position: relative;
+    }
+
+    .slider-track {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        width: max-content;
+        /* Animación de desplazamiento infinito */
+        animation: scroll 40s linear infinite;
+    }
+
+    /* PAUSA AL TOCAR O PASAR EL MOUSE */
+    .slider-track:hover, .slider-track:active {
+        animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-350px * 3)); /* Ajustar según contenido */ }
+    }
+
+    /* Tarjeta de Comentario */
+    .review-card {
+        background: var(--bg-card);
+        width: 350px;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        max-height: 500px; /* Scroll interno si hay muchos hilos */
+        overflow-y: auto;
+    }
+
+    .user-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .user-info h4 { margin: 0; font-size: 16px; }
+    .stars { color: #f1c40f; font-size: 12px; }
+
+    .comment-text { font-size: 14px; color: #555; line-height: 1.5; margin-bottom: 15px; }
+
+    /* Botones de Interacción */
+    .actions {
+        display: flex;
+        gap: 15px;
+        font-size: 13px;
+        color: #777;
+        margin-bottom: 10px;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+    }
+
+    .action-btn {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: color 0.2s;
+    }
+
+    .action-btn:hover { color: var(--accent); }
+    .action-btn.liked { color: #e74c3c; }
+
+    /* Área de Respuesta */
+    .reply-section {
+        margin-top: 10px;
+        display: none; /* Oculto por defecto */
+    }
+
+    .reply-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        box-sizing: border-box;
+    }
+
+    .send-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+    /* Estilos para Comentarios Anidados (Hijos) */
+    .nested-comments {
+        margin-left: 20px;
+        padding-left: 10px;
+        border-left: 2px solid #eee;
+        margin-top: 10px;
+    }
+
+    .nested-card {
+        background: #fafafa;
+        padding: 10px;
+        border-radius: 8px;
+        margin-top: 10px;
+        font-size: 0.9em;
+    }
+
+    /* Estilo especial para la respuesta de la marca */
+    .brand-response {
+        background-color: var(--brand-reply);
+        border: 1px solid #d1e7dd;
+    }
+    .brand-badge {
+        background: var(--accent);
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 10px;
+        margin-left: 5px;
+        vertical-align: middle;
+    
+  </style>
+</head>
+<body class="antialiased">
+
+  <nav class="fixed top-0 w-full z-40 glass-nav transition-all duration-300" id="navbar">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a class="flex items-center gap-3 group cursor-pointer" href="#inicio">
+        <div class="w-10 h-10 border border-gold-400 flex items-center justify-center rounded-sm bg-royal-900 group-hover:bg-gold-400 transition duration-500 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+          <i class='bx bxs-crown text-gold-400 text-xl group-hover:text-royal-900'></i>
+        </div>
+        <div class="leading-none">
+          <h1 class="text-xl font-serif font-bold text-white tracking-widest">RENTE<span class="text-gold-400">CONFORT</span></h1>
+          <p class="text-[9px] text-slate-400 uppercase tracking-[0.3em]">León, Gto.</p>
+        </div>
+      </a> 
+      
+      <div class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em] text-slate-300">
+        <a class="hover:text-gold-400 transition-colors" href="#filosofia">Filosofía</a>
+        <a class="hover:text-gold-400 transition-colors" href="#coleccion">Colección</a>
+        <a class="hover:text-gold-400 transition-colors" href="#cotizador">Cotizador</a>
+        <a class="hover:text-gold-400 transition-colors" href="#ubicacion">Ubicación</a>
+      </div>
+
+      <a href="javascript:toggleChat()" class="hidden md:flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-gold-500 to-gold-400 hover:to-white text-royal-900 font-bold text-xs uppercase tracking-widest rounded-sm transition-all duration-300 shadow-lg transform hover:-translate-y-0.5">
+        <span>Asesor en Línea</span>
+        <i class='bx bxs-chat text-lg'></i>
+      </a>
+    </div>
+  </nav>
+
+  <header id="inicio" class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-royal-900">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-royal-900/90 via-royal-900/40 to-royal-900/90 z-10"></div>
+      <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover animate-[float_20s_infinite_ease-in-out] scale-105" alt="Boda de Lujo">
+    </div>
+
+    <div class="container mx-auto px-6 relative z-20 text-center text-white mt-10">
+      <div class="inline-flex items-center gap-4 mb-6 opacity-0 animate-fade-up border-b border-gold-400/30 pb-3">
+        <span class="text-gold-400"><i class='bx bxs-star'></i></span>
+        <span class="text-xs uppercase tracking-[0.4em] text-slate-200">El estándar de oro en el Bajío</span>
+        <span class="text-gold-400"><i class='bx bxs-star'></i></span>
+      </div>
+      
+      <h1 class="text-5xl md:text-7xl font-serif font-medium leading-[1.1] mb-6 opacity-0 animate-fade-up" style="animation-delay: 0.2s;">
+        Diseñamos Momentos <br> <span class="gold-gradient-text italic font-normal">Inolvidables.</span>
+      </h1>
+      
+      <p class="max-w-2xl mx-auto text-slate-300 text-lg font-light leading-relaxed mb-10 opacity-0 animate-fade-up" style="animation-delay: 0.4s;">
+        Expertos en arquitectura efímera y mobiliario de autor. Transformamos espacios en <strong>León y todo Guanajuato</strong> con precisión logística.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-6 opacity-0 animate-fade-up" style="animation-delay: 0.6s;">
+        <button onclick="document.getElementById('cotizador').scrollIntoView()" class="px-8 py-4 bg-white text-royal-900 font-bold text-xs tracking-[0.2em] uppercase hover:bg-gold-400 transition-colors duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+          Cotizar Ahora
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section id="coleccion" class="py-20 bg-royal-900 text-white bg-pattern relative">
+    <div class="absolute inset-0 bg-gradient-to-t from-royal-900 via-transparent to-royal-900/50"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+        <div>
+            <span class="text-gold-400 text-xs font-bold uppercase tracking-[0.3em]">Curaduría Exclusiva</span>
+            <h2 class="text-4xl md:text-5xl font-serif mt-2">Paquetes Signature</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="group bg-royal-800 rounded-sm overflow-hidden hover-card reveal border border-white/5 hover:border-gold-400/50 relative">
+          <div class="h-64 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-700">
+            <div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 z-20">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-white">Boda Luxury</span>
+            </div>
+          </div>
+          <div class="p-6 relative">
+            <h3 class="text-2xl font-serif mb-2 text-white">Platinum</h3>
+            <p class="text-slate-400 text-sm mb-4">El estándar para bodas de etiqueta rigurosa.</p>
+            <div class="flex justify-between items-end border-t border-white/10 pt-4">
+              <p class="text-2xl font-serif text-gold-400">$25,800</p>
+              <button onclick="addPackageToCart('Platinum', 25800)" class="bg-white text-royal-900 hover:bg-gold-400 font-bold px-4 py-2 text-xs uppercase tracking-widest transition rounded-sm">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-surface text-royal-900 rounded-sm overflow-hidden hover-card reveal transform md:-translate-y-4 shadow-2xl relative z-10">
+          <div class="h-64 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-700">
+             <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4 z-20">
+              <span class="text-gold-400 text-[10px] font-bold uppercase tracking-widest block mb-1">Favorito</span>
+              <h3 class="text-2xl font-serif text-white">Silver Garden</h3>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-slate-600 text-sm mb-4">Ideal para eventos al aire libre, bautizos y primeras comuniones.</p>
+            <div class="flex justify-between items-end border-t border-slate-200 pt-4">
+              <p class="text-2xl font-serif text-royal-900">$8,500</p>
+              <button onclick="addPackageToCart('Silver', 8500)" class="bg-royal-900 text-white hover:bg-gold-500 hover:text-royal-900 font-bold px-4 py-2 text-xs uppercase tracking-widest transition rounded-sm">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="group bg-royal-800 rounded-sm overflow-hidden hover-card reveal border border-white/5 hover:border-gold-400/50">
+          <div class="h-64 overflow-hidden relative">
+             <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-700">
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-serif mb-2 text-white">Corporate Gold</h3>
+            <p class="text-slate-400 text-sm mb-4">Funcionalidad premium para conferencias y lanzamientos.</p>
+            <div class="flex justify-between items-end border-t border-white/10 pt-4">
+              <p class="text-2xl font-serif text-gold-400">$12,200</p>
+              <button onclick="addPackageToCart('Gold', 12200)" class="bg-white text-royal-900 hover:bg-gold-400 font-bold px-4 py-2 text-xs uppercase tracking-widest transition rounded-sm">Agregar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cotizador" class="py-24 bg-surface border-t border-slate-200">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-10 reveal">
+        <h2 class="text-4xl font-serif text-royal-900 mb-2">Diseña tu Evento</h2>
+        <p class="text-slate-500">Selecciona los elementos para armar tu cotización en tiempo real.</p>
+      </div>
+
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row shadow-2xl rounded-2xl overflow-hidden reveal bg-white">
+        
+        <div class="lg:w-1/3 bg-royal-900 p-8 text-white relative flex flex-col justify-between order-2 lg:order-1">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-gold-400/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+          
+          <div>
+            <h3 class="text-xl font-serif mb-6 text-gold-400 border-b border-white/10 pb-2">Tu Selección</h3>
+            
+            <div id="selected-items-container" class="mb-6 max-h-[300px] overflow-y-auto text-sm text-slate-300 space-y-2 pr-2 scrollbar-hide min-h-[100px]">
+                <p class="text-slate-500 italic text-center mt-10">Tu carrito está vacío.</p>
+            </div>
+
+            <div class="bg-white/5 backdrop-blur-md p-6 rounded-xl border border-white/10 mb-4">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-xs uppercase tracking-widest text-slate-300">Total Estimado</span>
+                </div>
+                <div id="total-display" class="text-4xl font-serif font-bold text-white tracking-tight">$0.00</div>
+                <div class="text-[10px] text-slate-400 mt-2">*Precios sujetos a cambio sin previo aviso.</div>
+            </div>
+          </div>
+
+          <button onclick="openChatWithCart()" class="w-full bg-gradient-to-r from-gold-500 to-gold-400 hover:to-white hover:text-royal-900 text-royal-900 font-bold py-4 rounded-lg transition duration-300 flex items-center justify-center gap-3 uppercase tracking-wider text-xs shadow-lg transform active:scale-95">
+            <span>Confirmar Disponibilidad</span>
+            <i class='bx bxl-whatsapp text-xl'></i>
+          </button>
+        </div>
+
+        <div class="lg:w-2/3 p-6 lg:p-10 bg-white order-1 lg:order-2">
+          <div class="flex flex-wrap gap-2 mb-6 border-b border-slate-100 pb-4 sticky top-0 bg-white z-10 pt-2" id="category-filters">
+            <button onclick="filterProducts('all')" class="filter-btn active px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-slate-200 bg-royal-900 text-white shadow-md transition" data-cat="all">Todos</button>
+            <button onclick="filterProducts('Carpas')" class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-slate-200 text-slate-500 hover:text-royal-900 transition" data-cat="Carpas">Carpas</button>
+            <button onclick="filterProducts('Mobiliario')" class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-slate-200 text-slate-500 hover:text-royal-900 transition" data-cat="Mobiliario">Mesas/Sillas</button>
+            <button onclick="filterProducts('Loza')" class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-slate-200 text-slate-500 hover:text-royal-900 transition" data-cat="Loza">Loza</button>
+            <button onclick="filterProducts('Mantelería')" class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-slate-200 text-slate-500 hover:text-royal-900 transition" data-cat="Mantelería">Mantelería</button>
+            <button onclick="filterProducts('Extras')" class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border border-slate-200 text-slate-500 hover:text-royal-900 transition" data-cat="Extras">Extras</button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto max-h-[600px] pr-2 custom-scrollbar" id="products-list">
+             </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews-section">
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    
+    <div class="slider-container">
+        <div class="slider-track" id="sliderTrack">
+            </div>
+    </div>
+  </section>
+  
+  <section id="ubicacion" class="relative bg-royal-900 border-t border-gold-400/20">
+    <div class="flex flex-col lg:flex-row">
+        <div class="lg:w-1/2 p-12 flex flex-col justify-center">
+            <h2 class="text-3xl font-serif text-white mb-8 border-l-4 border-gold-400 pl-4">Visítanos</h2>
+            <div class="space-y-6">
+                <div class="flex gap-4 group cursor-pointer" onclick="toggleChat(); processBotLogic('mapa')">
+                    <div class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center rounded text-gold-400 group-hover:bg-gold-400 group-hover:text-royal-900 transition">
+                        <i class='bx bx-map text-2xl'></i>
+                    </div>
+                    <div>
+                        <p class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-1">Ubicación</p>
+                        <p class="text-white text-lg font-serif">Calle Tallin 145</p>
+                        <p class="text-slate-400 text-sm">Col. Agua Azul, León, Gto.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 group">
+                    <div class="w-12 h-12 bg-white/5 border border-white/10 flex items-center justify-center rounded text-gold-400">
+                        <i class='bx bx-phone text-2xl'></i>
+                    </div>
+                    <div>
+                        <p class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-1">Atención Personal</p>
+                        <p class="text-white text-lg font-serif">477 821 7435</p>
+                        <p class="text-slate-400 text-sm">Pregunta por Santiago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lg:w-1/2 min-h-[300px] relative">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.734680875936!2d-101.65688532495677!3d21.123143980550187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842bdb7967175555%3A0x123456789abcdef!2sC.%20Tallin%20145%2C%20Agua%20Azul%2C%2037250%20Le%C3%B3n%2C%20Gto.!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+  </section>
+
+  <footer class="bg-royal-900 text-slate-500 pt-10 pb-8 border-t border-white/5 text-sm">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-2xl font-serif text-white mb-2">RENTE CONFORT</h2>
+        <p class="text-slate-400 text-xs uppercase tracking-widest mb-6">Elevando el estándar de eventos en el Bajío</p>
+        <p>© 2026 Rente Confort. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end font-sans">
+    
+    <div id="chat-window" class="hidden w-[350px] md:w-[380px] bg-white rounded-2xl shadow-2xl flex flex-col mb-4 overflow-hidden border border-slate-200 transform transition-all duration-300 origin-bottom-right animate-fade-up">
+      
+      <div class="bg-royal-900 p-4 flex justify-between items-center relative overflow-hidden">
+        <div class="flex items-center gap-3 relative z-10">
+          <div class="relative">
+             <img src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?w=200" class="w-10 h-10 rounded-full border-2 border-gold-400 object-cover shadow-md">
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border border-royal-900 rounded-full"></span>
+          </div>
+          <div>
+            <p class="font-bold text-white text-sm">Santiago</p>
+            <p class="text-[10px] text-gold-400 uppercase tracking-wider">Concierge</p>
+          </div>
+        </div>
+        <button type="button" onclick="toggleChat()" class="text-slate-400 hover:text-white transition"><i class='bx bx-x text-2xl'></i></button>
+      </div>
+
+      <div id="chat-content" class="h-[380px] overflow-y-auto p-4 bg-slate-50 text-sm space-y-3 scrollbar-hide">
+         </div>
+
+      <div id="chat-suggestions" class="px-4 py-2 bg-white border-t border-slate-100 flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide pb-2">
+         </div>
+
+      <div class="p-3 bg-white flex gap-2 items-center border-t border-slate-100">
+        <input type="text" id="chat-input" placeholder="Escribe aquí..." 
+               class="flex-1 bg-slate-100 rounded-full px-4 py-2 text-sm focus:ring-1 focus:ring-gold-400 focus:bg-white border-none outline-none transition text-slate-700"
+               onkeypress="if(event.key === 'Enter') handleUserMessage()">
+        <button onclick="handleUserMessage()" class="w-9 h-9 bg-royal-900 text-white rounded-full flex items-center justify-center hover:bg-gold-500 transition shadow-lg">
+          <i class='bx bxs-send'></i>
+        </button>
+      </div>
+    </div>
+
+    <button onclick="toggleChat()" class="group relative w-14 h-14 bg-royal-900 rounded-full shadow-2xl flex items-center justify-center border-2 border-gold-400 hover:scale-110 transition duration-300 z-50">
+      <i class='bx bxs-message-dots text-3xl text-white'></i>
+      <span class="absolute top-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-royal-900 animate-pulse"></span>
+    </button>
+  </div>
+
+  <script>
+    // --- 1. LÓGICA UI & SCROLL ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // --- 2. INVENTARIO ROBUSTO (+60 Artículos) ---
+    const inventory = [
+      // CARPAS
+      { id: 101, name: "Carpa Estructural 12x24m", price: 12000, category: "Carpas", icon: "bx-building" },
+      { id: 102, name: "Carpa Transparente 10x20m", price: 15000, category: "Carpas", icon: "bx-window" },
+      { id: 103, name: "Carpa Árabe 6x6m", price: 1200, category: "Carpas", icon: "bx-home-alt-2" },
+      { id: 104, name: "Carpa Plisada Elegance 5x5m", price: 1800, category: "Carpas", icon: "bx-home" },
+      { id: 105, name: "Carpa Beduina (Tipo Vela)", price: 4500, category: "Carpas", icon: "bx-flag" },
+      { id: 106, name: "Toldo Pagoda 3x3m", price: 450, category: "Carpas", icon: "bx-store-alt" },
+      { id: 107, name: "Entarimado Pista (m2)", price: 120, category: "Carpas", icon: "bx-layer" },
+      { id: 108, name: "Cielo Estrellado LED (m2)", price: 85, category: "Carpas", icon: "bx-star" },
+      { id: 109, name: "Candelabro Estilo Imperio", price: 1200, category: "Carpas", icon: "bx-bulb" },
+      { id: 110, name: "Cortinaje Lateral (ml)", price: 50, category: "Carpas", icon: "bx-border-left" },
+
+      // MOBILIARIO (MESAS Y SILLAS)
+      { id: 201, name: "Mesa Parota Imperial (12px)", price: 550, category: "Mobiliario", icon: "bx-layout" },
+      { id: 202, name: "Mesa Espejo Gold (10px)", price: 800, category: "Mobiliario", icon: "bx-rectangle" },
+      { id: 203, name: "Mesa Mármol Carrara (10px)", price: 750, category: "Mobiliario", icon: "bx-rectangle" },
+      { id: 204, name: "Mesa Redonda (10px)", price: 150, category: "Mobiliario", icon: "bx-circle" },
+      { id: 205, name: "Mesa Cuadrada (12px)", price: 180, category: "Mobiliario", icon: "bx-square" },
+      { id: 206, name: "Silla Crossback Madera", price: 55, category: "Mobiliario", icon: "bx-chair" },
+      { id: 207, name: "Silla Tiffany Dorada", price: 45, category: "Mobiliario", icon: "bx-chair" },
+      { id: 208, name: "Silla Tiffany Blanca", price: 45, category: "Mobiliario", icon: "bx-chair" },
+      { id: 209, name: "Silla Versalles Gold", price: 65, category: "Mobiliario", icon: "bx-crown" },
+      { id: 210, name: "Silla Phoenix Transparente", price: 75, category: "Mobiliario", icon: "bx-ghost" },
+      { id: 211, name: "Silla Dior Blanca", price: 80, category: "Mobiliario", icon: "bx-chair" },
+      { id: 212, name: "Silla Avant Garde Plegable", price: 40, category: "Mobiliario", icon: "bx-chair" },
+      { id: 213, name: "Sala Lounge Velvet (8px)", price: 1200, category: "Mobiliario", icon: "bx-sofa" },
+      { id: 214, name: "Sala Lounge Chesterfield", price: 1800, category: "Mobiliario", icon: "bx-sofa" },
+      { id: 215, name: "Periquera Vintage (4px)", price: 350, category: "Mobiliario", icon: "bx-beer" },
+      { id: 216, name: "Sillón Novios Luis XV", price: 1500, category: "Mobiliario", icon: "bx-heart" },
+
+      // LOZA
+      { id: 301, name: "Plato Base Pewter/Oro", price: 15, category: "Loza", icon: "bx-dish" },
+      { id: 302, name: "Plato Base Cristal Filo Oro", price: 20, category: "Loza", icon: "bx-dish" },
+      { id: 303, name: "Plato Trinche Talavera", price: 12, category: "Loza", icon: "bx-circle" },
+      { id: 304, name: "Plato Trinche Cuadrado", price: 8, category: "Loza", icon: "bx-square" },
+      { id: 305, name: "Plato Postre", price: 6, category: "Loza", icon: "bx-cookie" },
+      { id: 306, name: "Copa Cristal Vino Tinto", price: 12, category: "Loza", icon: "bx-wine" },
+      { id: 307, name: "Copa Flauta (Champagne)", price: 12, category: "Loza", icon: "bx-glass" },
+      { id: 308, name: "Copa Agua Color Ámbar", price: 15, category: "Loza", icon: "bx-water" },
+      { id: 309, name: "Copa Agua Color Humo", price: 15, category: "Loza", icon: "bx-water" },
+      { id: 310, name: "Vaso Old Fashion Cristal", price: 8, category: "Loza", icon: "bx-cube-alt" },
+      { id: 311, name: "Vaso Highball", price: 6, category: "Loza", icon: "bx-drink" },
+      { id: 312, name: "Juego Cubiertos Oro (4pzs)", price: 25, category: "Loza", icon: "bx-restaurant" },
+      { id: 313, name: "Juego Cubiertos Plata", price: 18, category: "Loza", icon: "bx-restaurant" },
+      { id: 314, name: "Juego Cubiertos Rose Gold", price: 28, category: "Loza", icon: "bx-restaurant" },
+
+      // MANTELERÍA
+      { id: 401, name: "Mantel Redondo Blanco", price: 120, category: "Mantelería", icon: "bx-cloth" },
+      { id: 402, name: "Mantel Redondo Negro", price: 120, category: "Mantelería", icon: "bx-cloth" },
+      { id: 403, name: "Mantel Terciopelo Gris", price: 180, category: "Mantelería", icon: "bx-cloth" },
+      { id: 404, name: "Camino de Mesa Gasa", price: 80, category: "Mantelería", icon: "bx-menu" },
+      { id: 405, name: "Servilleta Tela Lino", price: 12, category: "Mantelería", icon: "bx-notepad" },
+      { id: 406, name: "Cubre Silla", price: 15, category: "Mantelería", icon: "bx-chair" },
+
+      // EXTRAS (PISTAS, AUDIO, DECO)
+      { id: 501, name: "Pista de Baile Madera (m2)", price: 250, category: "Extras", icon: "bx-grid-alt" },
+      { id: 502, name: "Pista de Baile Charol B/N (m2)", price: 300, category: "Extras", icon: "bx-grid" },
+      { id: 503, name: "Pista LED Pixel (m2)", price: 450, category: "Extras", icon: "bx-chip" },
+      { id: 504, name: "Letras Gigantes (c/u)", price: 500, category: "Extras", icon: "bx-font" },
+      { id: 505, name: "Calentador Tipo Hongo", price: 850, category: "Extras", icon: "bx-flame" },
+      { id: 506, name: "Audio Básico (2 Bocinas)", price: 2500, category: "Extras", icon: "bx-speaker" },
+      { id: 507, name: "Iluminación Arquitectónica (4 pares)", price: 1200, category: "Extras", icon: "bx-bulb" },
+      { id: 508, name: "Planta de Luz 5000w", price: 3500, category: "Extras", icon: "bx-plug" },
+      { id: 509, name: "Barra Iluminada (Tragos)", price: 2000, category: "Extras", icon: "bx-drink" },
+      
+      // PAQUETES FICTICIOS PARA LOGICA
+      { id: 901, name: "Paquete Boda Platinum", price: 25800, category: "Paquetes", icon: "bx-star" },
+      { id: 902, name: "Paquete Silver Garden", price: 8500, category: "Paquetes", icon: "bx-star" },
+      { id: 903, name: "Paquete Corporate Gold", price: 12200, category: "Paquetes", icon: "bx-star" }
+    ];
+
+    // --- 3. SISTEMA DE CARRITO ---
+    let cart = {}; 
+
+    function renderProducts(filter = 'all') {
+      const listContainer = document.getElementById('products-list');
+      listContainer.innerHTML = '';
+      
+      const filteredItems = filter === 'all' 
+        ? inventory.filter(i => i.category !== 'Paquetes') 
+        : inventory.filter(item => item.category === filter);
+
+      if(filteredItems.length === 0) {
+        listContainer.innerHTML = '<div class="col-span-full text-center py-10 text-slate-400">No hay productos en esta categoría.</div>';
+        return;
+      }
+
+      filteredItems.forEach((item, index) => {
+        const currentQty = cart[item.id] ? cart[item.id].qty : 0;
+        // Animación escalonada
+        const delay = index * 50; 
+
+        listContainer.innerHTML += `
+          <div class="flex items-center justify-between p-3 rounded-lg border border-slate-100 bg-white hover:border-gold-400/50 hover:shadow-md transition duration-300 animate-fade-up" style="animation-delay: ${delay}ms">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded bg-slate-50 flex items-center justify-center text-royal-900 group-hover:bg-royal-900 group-hover:text-gold-400 transition shrink-0">
+                <i class='bx ${item.icon} text-xl'></i>
+              </div>
+              <div>
+                <p class="font-bold text-royal-900 text-xs md:text-sm">${item.name}</p>
+                <p class="text-[10px] text-gold-500 font-bold">$${item.price.toLocaleString()} MXN</p>
+              </div>
+            </div>
+            <input type="number" min="0" value="${currentQty}" 
+                   class="w-12 text-center py-1 border border-slate-200 rounded text-sm font-bold focus:border-gold-400 outline-none"
+                   onchange="updateCart(${item.id}, this.value)">
+          </div>
+        `;
+      });
+    }
+
+    function updateCart(id, qty) {
+      const item = inventory.find(i => i.id === id);
+      const quantity = parseInt(qty) || 0;
+
+      if (quantity > 0) {
+        cart[id] = { qty: quantity, price: item.price, name: item.name };
+      } else {
+        delete cart[id];
+      }
+      updateTotalUI();
+    }
+
+    function addPackageToCart(packageName, price) {
+        // Encontrar ID del paquete
+        const pack = inventory.find(i => i.name.includes(packageName));
+        if(pack) {
+            updateCart(pack.id, 1);
+            botReply(`He agregado el ${packageName} a tu cotización. ¿Te gustaría ver el total?`, ["Ver Carrito"]);
+            if(window.innerWidth < 1024) toggleChat(); // Abrir chat en móvil
+            else document.getElementById('cotizador').scrollIntoView({behavior: 'smooth'});
+        }
+    }
+
+    function updateTotalUI() {
+      let total = 0;
+      let summaryHtml = '';
+      const hasItems = Object.keys(cart).length > 0;
+      
+      Object.keys(cart).forEach(key => {
+        const item = cart[key];
+        const subtotal = item.qty * item.price;
+        total += subtotal;
+        summaryHtml += `
+            <div class="flex justify-between items-center bg-white/5 p-2 rounded hover:bg-white/10 transition">
+                <span class="truncate pr-2">${item.qty}x ${item.name}</span> 
+                <span class="font-mono font-bold text-gold-400">$${subtotal.toLocaleString()}</span>
+            </div>`;
+      });
+
+      const formattedTotal = `$${total.toLocaleString('es-MX', {minimumFractionDigits: 2})}`;
+      document.getElementById('total-display').innerText = formattedTotal;
+      
+      const container = document.getElementById('selected-items-container');
+      if (container) {
+          container.innerHTML = hasItems ? summaryHtml : '<p class="text-slate-500 italic text-center mt-4">Selecciona productos de la lista...</p>';
+      }
+    }
+
+    function filterProducts(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        const isActive = btn.dataset.cat === category;
+        if(isActive){
+            btn.classList.remove('bg-white', 'text-slate-500');
+            btn.classList.add('bg-royal-900', 'text-white');
+        } else {
+            btn.classList.add('bg-white', 'text-slate-500');
+            btn.classList.remove('bg-royal-900', 'text-white');
+        }
+      });
+      renderProducts(category);
+    }
+
+    // --- 4. CHATBOT SANTIAGO 2.0 (LÓGICA MEJORADA) ---
+    let chatState = 'IDLE'; 
+    let userData = { name: '', type: '', date: '' };
+
+    function toggleChat() {
+      const win = document.getElementById('chat-window');
+      win.classList.toggle('hidden');
+      
+      if(!win.classList.contains('hidden') && chatState === 'IDLE') {
+        showTypingIndicator();
+        setTimeout(() => {
+          removeTypingIndicator();
+          botReply("¡Hola! Soy Santiago. 👋 Bienvenido a Rente Confort. Para atenderte mejor, ¿me podrías decir tu nombre?", []);
+          chatState = 'WAITING_NAME';
+        }, 800);
+      }
+    }
+
+    function openChatWithCart() {
+        const win = document.getElementById('chat-window');
+        if(win.classList.contains('hidden')) toggleChat();
+        
+        setTimeout(() => {
+             botReply("Veo que tienes productos seleccionados. ¿Quieres enviarme la cotización por WhatsApp para confirmar existencias?", ["Sí, enviar ahora", "Seguir viendo"]);
+             chatState = 'MENU_PRINCIPAL';
+        }, 1000);
+    }
+
+    function handleUserMessage() {
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if(!text) return;
+      
+      addUserMsg(text);
+      input.value = '';
+      showTypingIndicator();
+      setTimeout(() => processBotLogic(text), 800);
+    }
+
+    function processBotLogic(text) {
+      removeTypingIndicator();
+      const lower = text.toLowerCase();
+
+      switch (chatState) {
+        case 'WAITING_NAME':
+          userData.name = text;
+          chatState = 'WAITING_TYPE';
+          botReply(`Un gusto, ${userData.name}. ¿Qué tipo de evento estás planeando?`, ["Boda", "XV Años", "Empresarial", "Cumpleaños"]);
+          break;
+
+        case 'WAITING_TYPE':
+          userData.type = text;
+          chatState = 'WAITING_DATE';
+          botReply(`¡Excelente! ¿Ya tienes fecha tentativa para tu ${userData.type}?`, ["Próximo mes", "En 3 meses", "Aún no tengo fecha"]);
+          break;
+
+        case 'WAITING_DATE':
+          userData.date = text;
+          chatState = 'MENU_PRINCIPAL';
+          botReply(`Perfecto. Datos registrados. ¿Cómo puedo ayudarte hoy?`, ["Ver Catálogo", "Enviar mi Carrito", "Ubicación", "Hablar con Humano"]);
+          break;
+
+        case 'MENU_PRINCIPAL':
+          handleMainMenu(lower);
+          break;
+
+        default:
+          handleMainMenu(lower);
+      }
+    }
+
+    function handleMainMenu(lower) {
+      if (lower.includes('cotizar') || lower.includes('carrito') || lower.includes('enviar')) {
+        if(Object.keys(cart).length === 0){
+           botReply("Tu carrito está vacío. Agrega productos del catálogo en la sección 'Diseña tu Evento' o dime qué buscas.", ["Ver Carpas", "Ver Sillas"]);
+           document.getElementById('cotizador').scrollIntoView({behavior: 'smooth'});
+        } else {
+           sendToWhatsApp();
+        }
+      } else if (lower.includes('ubicación') || lower.includes('mapa') || lower.includes('donde')) {
+         showLocationMap();
+      } else if (lower.includes('hablar') || lower.includes('humano') || lower.includes('asesor')) {
+         botReply("Te paso mi contacto directo.", ["Abrir WhatsApp"]);
+         addLinkBtn("https://wa.me/524778217435", "Contactar a Santiago");
+      } else {
+         botReply("Entendido. Puedes seleccionar productos arriba o pedirme la ubicación.", ["Ubicación", "Enviar Cotización"]);
+      }
+    }
+
+    function sendToWhatsApp() {
+      let message = `Hola Santiago, soy *${userData.name || 'Cliente'}*.\n`;
+      message += `Evento: *${userData.type || 'Pendiente'}* | Fecha: *${userData.date || 'Pendiente'}*\n\n`;
+      message += `*SOLICITUD DE COTIZACIÓN:*\n`;
+
+      let total = 0;
+      Object.keys(cart).forEach(key => {
+        const item = cart[key];
+        total += item.qty * item.price;
+        message += `• ${item.qty}x ${item.name} ($${(item.qty * item.price).toLocaleString()})\n`;
+      });
+      
+      message += `\n*Total Estimado: $${total.toLocaleString()} MXN*\n(Pendiente revisión de flete y disponibilidad).`;
+
+      const url = `https://wa.me/524778217435?text=${encodeURIComponent(message)}`;
+      
+      botReply(`He generado tu cotización por $${total.toLocaleString()}. Haz clic para enviarla y apartar fecha.`);
+      addLinkBtn(url, "Enviar por WhatsApp");
+    }
+
+    function showLocationMap() {
+        botReply("Estamos en **Calle Tallin 145, Col. Agua Azul, León**. Aquí tienes el mapa:");
+        setTimeout(() => {
+            const mapHtml = `
+            <div class="mb-3 rounded-lg overflow-hidden border border-slate-200 shadow-sm animate-fade-up">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.734680875936!2d-101.65688532495677!3d21.123143980550187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842bdb7967175555%3A0x123456789abcdef!2sC.%20Tallin%20145%2C%20Agua%20Azul%2C%2037250%20Le%C3%B3n%2C%20Gto.!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>`;
+            document.getElementById('chat-content').insertAdjacentHTML('beforeend', mapHtml);
+            scrollToBottom();
+        }, 500);
+    }
+
+    // --- UTILS CHAT ---
+    function addUserMsg(text) {
+      const c = document.getElementById('chat-content');
+      c.innerHTML += `<div class="flex justify-end animate-fade-up"><div class="bg-royal-900 text-white px-4 py-2 rounded-2xl rounded-tr-none max-w-[85%] shadow">${text}</div></div>`;
+      scrollToBottom();
+    }
+
+    function botReply(text, opts = []) {
+      const c = document.getElementById('chat-content');
+      c.innerHTML += `
+        <div class="flex gap-2 animate-fade-up">
+           <img src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?w=200" class="w-8 h-8 rounded-full border border-gold-400 object-cover mt-1 shrink-0">
+           <div class="bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm">
+             ${text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')}
+           </div>
+        </div>`;
+      renderSuggestions(opts);
+      scrollToBottom();
+    }
+
+    function addLinkBtn(url, label) {
+        const c = document.getElementById('chat-content');
+        setTimeout(() => {
+            c.innerHTML += `<div class="flex justify-center animate-fade-up"><a href="${url}" target="_blank" class="flex items-center gap-2 bg-[#25D366] text-white px-5 py-2 rounded-full font-bold shadow hover:bg-[#20ba56] transition"><i class='bx bxl-whatsapp text-xl'></i> ${label}</a></div>`;
+            scrollToBottom();
+        }, 400);
+    }
+
+    function renderSuggestions(opts) {
+      const c = document.getElementById('chat-suggestions');
+      if(opts.length > 0) {
+        c.innerHTML = opts.map(o => `<button onclick="document.getElementById('chat-input').value='${o}'; handleUserMessage()" class="px-3 py-1 bg-slate-100 border border-slate-200 rounded-full text-xs text-slate-600 hover:bg-royal-900 hover:text-white transition whitespace-nowrap">${o}</button>`).join('');
+      } else { c.innerHTML = ''; }
+    }
+
+    function showTypingIndicator() {
+       document.getElementById('chat-content').innerHTML += `<div id="typing" class="flex gap-1 ml-10 mb-2 p-2"><div class="w-2 h-2 bg-slate-300 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-slate-300 rounded-full animate-bounce delay-100"></div><div class="w-2 h-2 bg-slate-300 rounded-full animate-bounce delay-200"></div></div>`;
+       scrollToBottom();
+    }
+    function removeTypingIndicator() { const el = document.getElementById('typing'); if(el) el.remove(); }
+    function scrollToBottom() { const el = document.getElementById('chat-content'); el.scrollTop = el.scrollHeight; }
+
+    // Init
+    renderProducts('all');
+    
+    // Datos iniciales (6 Clientes)
+    const initialReviews = [
+        { id: 1, name: "Carlos M.", text: "Excelente servicio, el departamento estaba impecable.", rating: 5 },
+        { id: 2, name: "Ana G.", text: "Muy buena ubicación, pero el check-in demoró un poco.", rating: 4 },
+        { id: 3, name: "Luis R.", text: "Rente Confort siempre es mi primera opción. ¡Recomendado!", rating: 5 },
+        { id: 4, name: "Sofía L.", text: "Todo funcionaba perfecto, el WiFi volaba.", rating: 5 },
+        { id: 5, name: "Jorge T.", text: "Buen precio para la zona. Volveré.", rating: 4 },
+        { id: 6, name: "Mariana P.", text: "La atención al cliente fue rápida y amable.", rating: 5 }
+    ];
+
+    const track = document.getElementById('sliderTrack');
+
+    // Función para renderizar un bloque de comentario (Padre o Hijo)
+    function createCommentHTML(id, name, text, isBrand = false, rating = null) {
+        const brandBadge = isBrand ? '<span class="brand-badge">Oficial</span>' : '';
+        const cardClass = isBrand ? 'nested-card brand-response' : 'nested-card';
+        const stars = rating ? '★'.repeat(rating) : '';
+        
+        return `
+            <div class="${isBrand ? cardClass : ''}" id="comment-${id}">
+                <div class="user-header">
+                    <div class="avatar">${isBrand ? 'RC' : name.charAt(0)}</div>
+                    <div class="user-info">
+                        <h4>${name} ${brandBadge}</h4>
+                        ${rating ? `<div class="stars">${stars}</div>` : ''}
+                    </div>
+                </div>
+                <div class="comment-text">${text}</div>
+                
+                <div class="actions">
+                    <div class="action-btn" onclick="toggleLike(this)">
+                        <i class="far fa-heart"></i> <span class="count">0</span>
+                    </div>
+                    <div class="action-btn" onclick="showReplyForm('${id}')">
+                        <i class="far fa-comment-dots"></i> Responder
+                    </div>
+                </div>
+
+                <div class="reply-section" id="reply-form-${id}">
+                    <input type="text" class="reply-input" placeholder="Escribe tu respuesta..." id="input-${id}">
+                    <button class="send-btn" onclick="submitReply('${id}')">Publicar</button>
+                </div>
+
+                <div class="nested-comments" id="replies-${id}"></div>
+            </div>
+        `;
+    }
+
+    // Inicializar los 6 comentarios principales
+    function initSlider() {
+        initialReviews.forEach(review => {
+            const card = document.createElement('div');
+            card.className = 'review-card';
+            // Insertamos el HTML interno usando la misma estructura
+            card.innerHTML = createCommentHTML(review.id, review.name, review.text, false, review.rating);
+            
+            // Eliminamos la clase 'nested-card' del padre principal para mantener estilo de tarjeta grande
+            card.querySelector('#comment-' + review.id).className = ''; 
+            
+            track.appendChild(card);
+        });
+
+        // Duplicar elementos para efecto de scroll infinito suave (opcional visualmente)
+        // Para este ejemplo simple, dejaremos que la animación CSS haga el loop.
+    }
+
+    // --- Funciones de Interacción ---
+
+    // 1. Reaccionar (Like)
+    window.toggleLike = function(element) {
+        const icon = element.querySelector('i');
+        const countSpan = element.querySelector('.count');
+        let count = parseInt(countSpan.innerText);
+
+        if (element.classList.contains('liked')) {
+            element.classList.remove('liked');
+            icon.classList.replace('fas', 'far'); // Icono vacío
+            countSpan.innerText = count - 1;
+        } else {
+            element.classList.add('liked');
+            icon.classList.replace('far', 'fas'); // Icono lleno
+            countSpan.innerText = count + 1;
+        }
+    };
+
+    // 2. Mostrar formulario de respuesta
+    window.showReplyForm = function(id) {
+        const form = document.getElementById(`reply-form-${id}`);
+        form.style.display = form.style.display === 'block' ? 'none' : 'block';
+    };
+
+    // 3. Enviar Respuesta
+    window.submitReply = function(parentId) {
+        const input = document.getElementById(`input-${parentId}`);
+        const text = input.value.trim();
+        const repliesContainer = document.getElementById(`replies-${parentId}`);
+
+        if (text === "") return;
+
+        // Generar ID único
+        const newId = Date.now(); 
+        
+        // Crear el HTML de la respuesta del usuario
+        // NOTA: Aquí está la recursividad. El nuevo HTML incluye sus propios botones y contenedores.
+        const newCommentHTML = createCommentHTML(newId, "Usuario", text);
+        
+        // Insertar en el DOM
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = newCommentHTML;
+        repliesContainer.appendChild(wrapper.firstElementChild);
+
+        // Limpiar y ocultar input
+        input.value = "";
+        document.getElementById(`reply-form-${parentId}`).style.display = 'none';
+
+        // --- AUTOMATIZACIÓN RENTE CONFORT ---
+        triggerAutoReply(newId, repliesContainer);
+    };
+
+    // 4. Bot Rente Confort
+    function triggerAutoReply(targetId, container) {
+        setTimeout(() => {
+            const botId = targetId + "_bot";
+            const botResponseHTML = createCommentHTML(
+                botId, 
+                "Rente Confort", 
+                "¡Gracias por comentar! Nos alegra que seas parte de nuestra comunidad. Si necesitas ayuda, contáctanos.", 
+                true // Es marca
+            );
+
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = botResponseHTML;
+            container.appendChild(wrapper.firstElementChild);
+            
+            // Auto scroll al nuevo mensaje si es necesario
+            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        }, 2000); // Responde a los 2 segundos
+    }
+
+    // Arrancar
+    initSlider();
+
+  </script>
+</body>
+</html>
+
