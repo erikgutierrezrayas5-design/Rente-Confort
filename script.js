@@ -494,6 +494,18 @@ let isPaused = false;
 const scrollSpeed = 1; // Velocidad del desplazamiento automático
 
 // --- INICIALIZACIÓN ---
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts();
+    renderComments();
+    startAutoScroll();
+    
+    // Inicializar carrito abierto en desktop
+    if (window.innerWidth >= 1024) {
+        const cartBody = document.getElementById("cart-body");
+        if (cartBody) cartBody.style.maxHeight = "500px";
+    }
+});
+
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     menu.classList.toggle('translate-x-full');
