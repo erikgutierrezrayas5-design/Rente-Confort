@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>RENTE CONFORT | Arquitectura de Eventos & Mobiliario Luxury</title>
   <meta name="description" content="Especialistas en montaje de eventos de alto nivel en León, Gto.">
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -50,51 +50,6 @@
   </script>
 </head>
 <body class="antialiased font-sans">
-  <style type="tailwindcss">
-    @layer components {
-        /* Estilos del Nav Lateral */
-        .nav-sidebar {
-            @apply fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col items-end 
-                   transition-all duration-500 ease-in-out;
-        }
-
-        .nav-item {
-            @apply flex flex-row-reverse items-center bg-royal-900/95 backdrop-blur-md border border-gold-400/30 
-                   rounded-full mb-4 overflow-hidden transition-all duration-500 ease-in-out
-                   w-[48px] hover:w-[180px] group shadow-xl hover:shadow-gold-400/20;
-        }
-
-        .nav-icon {
-            @apply w-[48px] h-[48px] flex items-center justify-center 
-                   text-gold-400 text-2xl transition-all duration-300
-                   group-hover:text-white shrink-0;
-        }
-
-        .nav-label {
-            @apply opacity-0 translate-x-4 pointer-events-none transition-all duration-500
-                   text-white text-[11px] font-bold uppercase tracking-[0.2em] 
-                   whitespace-nowrap pr-4;
-        }
-
-        .group:hover .nav-label, .label-reveal .nav-label {
-            @apply opacity-100 translate-x-0;
-        }
-
-        .label-reveal.nav-item {
-            @apply w-[180px];
-        }
-
-        /* Links de móvil */
-        .mobile-link {
-            @apply text-3xl font-serif text-white hover:text-gold-400 transition-colors tracking-widest;
-        }
-        /* Efecto Glass */
-        .glass-nav {
-            @apply bg-royal-900/70 backdrop-blur-lg;
-        }
-    }
-  </style>
-
   <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300 border-b border-white/5">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <a class="flex items-center gap-3 group cursor-pointer" href="#inicio">
