@@ -59,8 +59,8 @@
         }
 
         .nav-item {
-            @apply flex items-center bg-royal-900/95 backdrop-blur-md border border-gold-400/30 
-                   rounded-l-full mb-4 overflow-hidden transition-all duration-500 ease-in-out
+            @apply flex flex-row-reverse items-center bg-royal-900/95 backdrop-blur-md border border-gold-400/30 
+                   rounded-full mb-4 overflow-hidden transition-all duration-500 ease-in-out
                    w-[48px] hover:w-[180px] group shadow-xl hover:shadow-gold-400/20;
         }
 
@@ -71,9 +71,9 @@
         }
 
         .nav-label {
-            @apply opacity-0 -translate-x-4 pointer-events-none transition-all duration-500
+            @apply opacity-0 translate-x-4 pointer-events-none transition-all duration-500
                    text-white text-[11px] font-bold uppercase tracking-[0.2em] 
-                   whitespace-nowrap pr-8;
+                   whitespace-nowrap pr-4;
         }
 
         .group:hover .nav-label, .label-reveal .nav-label {
@@ -118,23 +118,35 @@
   </nav>
 
   <aside id="side-nav" class="nav-sidebar hidden lg:flex">
-    <a href="#coleccion" class="nav-item group">
+    <a href="#coleccion" class="nav-item group" id="nav-item-1">
         <div class="nav-icon"><i class='bx bx-collection'></i></div>
         <span class="nav-label">Colección</span>
     </a>
-    <a href="#cotizador" class="nav-item group">
+    <a href="#cotizador" class="nav-item group" id="nav-item-2">
         <div class="nav-icon"><i class='bx bx-calculator'></i></div>
         <span class="nav-label">Cotizador</span>
     </a>
-    <a href="#opiniones" class="nav-item group">
+    <a href="#opiniones" class="nav-item group" id="nav-item-3">
         <div class="nav-icon"><i class='bx bx-comment-detail'></i></div>
         <span class="nav-label">Opiniones</span>
     </a>
-    <a href="#ubicacion" class="nav-item group">
+    <a href="#ubicacion" class="nav-item group" id="nav-item-4">
         <div class="nav-icon"><i class='bx bx-map-alt'></i></div>
         <span class="nav-label">Ubicación</span>
     </a>
   </aside>
+
+  <script>
+    // Animación de saludo del Nav
+    document.addEventListener('DOMContentLoaded', () => {
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => item.classList.add('label-reveal'));
+        
+        setTimeout(() => {
+            navItems.forEach(item => item.classList.remove('label-reveal'));
+        }, 2000);
+    });
+  </script>
 
   <div id="mobile-menu" class="fixed inset-0 bg-royal-900/98 z-[60] transform translate-x-full transition-transform duration-500 ease-in-out lg:hidden flex flex-col items-center justify-center">
     <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-gold-400 text-4xl hover:rotate-90 transition-transform">
